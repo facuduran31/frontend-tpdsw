@@ -7,17 +7,21 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { MaquinasVirtualesComponent } from './components/maquinas-virtuales/maquinas-virtuales.component';
 import { MaquinasVirtualesService } from './services/maquinas-virtuales.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AddMaquinaVirtualComponent } from './components/add-maquina-virtual/add-maquina-virtual.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    MaquinasVirtualesComponent
+    MaquinasVirtualesComponent,
+    AddMaquinaVirtualComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [MaquinasVirtualesService],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 export interface MaquinaVirtual {
-    idMaquinaVirtual: number;
+    idMaquinaVirtual?: number;
     sistemaOperativo: string;
     materias: string;
     programas: string;
