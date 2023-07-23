@@ -1,5 +1,37 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Carga completa</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Se ha cargado con éxito la máquina virtual.
+        <hr>
+          <b>
+            Sistema Operativo: {{maquinaVirtual.sistemaOperativo}}
+          </b>
+        <hr>
+          <b>
+            Materias: {{maquinaVirtual.materias}}
+          </b>
+        <hr>
+          <b>
+            Programas: {{maquinaVirtual.programas}}
+          </b>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="container mt-5">
-  <form (ngSubmit)="onSubmit()">
+  <form>
     <fieldset>
       <legend>Crear una nueva máquina virtual</legend>
       <div class="form-group">
@@ -14,27 +46,7 @@
         <label for="programas" class="form-label mt-4">Programas</label>
         <textarea class="form-control" id="programas" name="programas" rows="3" placeholder="MySql Workbench, Visual Studio Code, Smalltalk" [(ngModel)]="maquinaVirtual.programas"></textarea>
       </div>
-      <button type="button" class="btn btn-primary mt-4">Enviar</button>
+      <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#exampleModal" (click)="onSubmit()">Enviar</button>
     </fieldset>
   </form>
-
-  <div class="modal" *ngIf="showModal">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()">
-            <span aria-hidden="true"></span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Modal body text goes here.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Save changes</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>  
 </div>

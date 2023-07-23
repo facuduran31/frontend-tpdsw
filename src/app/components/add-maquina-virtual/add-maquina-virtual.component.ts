@@ -9,8 +9,6 @@ import { MaquinasVirtualesService } from 'src/app/services/maquinas-virtuales.se
 })
 export class AddMaquinaVirtualComponent {
 
-  showModal: boolean = false;
-
   maquinaVirtual: MaquinaVirtual = {
     sistemaOperativo: '',
     materias: '',
@@ -25,15 +23,10 @@ export class AddMaquinaVirtualComponent {
     this.maquinasService.crearMaquinaVirtual(this.maquinaVirtual).subscribe(
       response => {
         console.log('ID de la nueva máquina:', response.id);
-        this.showModal = true;
       },
       error => {
         console.error('Error al crear la máquina virtual:', error);
       }
     );
-  }
-
-  closeModal():void{
-    this.showModal = false;
   }
 }

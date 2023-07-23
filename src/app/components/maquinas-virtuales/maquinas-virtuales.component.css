@@ -1,0 +1,7 @@
+/* Estilos para los botones con íconos */
+.btn-icon {
+    color: #626262;
+    background-color: transparent; /* Fondo transparente */
+    border: none; /* Quita el borde del botón */
+  }
+  
