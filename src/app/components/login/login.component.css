@@ -1,0 +1,12 @@
+#container-login {
+    background-color: rgba(217, 217, 217, 0.726);
+    width: 70vh;
+}
+
+/* Media query para pantallas móviles */
+@media screen and (max-width: 767px) {
+    #container-login {
+        /* Altura para pantallas móviles */
+        height: 80vh;
+    }
+}

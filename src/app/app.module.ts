@@ -9,13 +9,15 @@ import { MaquinasVirtualesService } from './services/maquinas-virtuales.service'
 import { HttpClientModule } from '@angular/common/http';
 import { AddMaquinaVirtualComponent } from './components/add-maquina-virtual/add-maquina-virtual.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     MaquinasVirtualesComponent,
-    AddMaquinaVirtualComponent
+    AddMaquinaVirtualComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
