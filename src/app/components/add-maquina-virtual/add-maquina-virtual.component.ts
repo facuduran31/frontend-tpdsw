@@ -30,8 +30,4 @@ export class AddMaquinaVirtualComponent {
       }
     );
   }
-
-  salir(): void {
-    this.router.navigate(['maquinasvirtuales'])
-  }
 }
