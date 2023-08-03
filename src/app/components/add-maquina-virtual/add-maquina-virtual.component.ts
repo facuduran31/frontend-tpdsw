@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MaquinaVirtual } from 'src/app/model/MaquinaVirtual';
 import { MaquinasVirtualesService } from 'src/app/services/maquinas-virtuales.service';
 
@@ -15,7 +16,7 @@ export class AddMaquinaVirtualComponent {
     programas: ''
   };
   
-  constructor(private maquinasService: MaquinasVirtualesService) {
+  constructor(private maquinasService: MaquinasVirtualesService, private router: Router) {
   }
   
   onSubmit(): void {
@@ -28,5 +29,9 @@ export class AddMaquinaVirtualComponent {
         console.error('Error al crear la máquina virtual:', error);
       }
     );
+  }
+
+  salir(): void {
+    this.router.navigate(['maquinasvirtuales'])
   }
 }

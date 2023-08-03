@@ -30,7 +30,7 @@ export class MaquinasVirtualesComponent implements OnInit {
         }
       },
       (error) => {
-        console.error('Error al obtener las máquinas virtuales:', error);
+        console.log('Error al obtener las máquinas virtuales:', error);
       }
     );
   }
