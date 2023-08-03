@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MaquinaVirtual } from '../../model/MaquinaVirtual';
 import { MaquinasVirtualesService } from '../../services/maquinas-virtuales.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-maquinas-virtuales',
@@ -10,7 +11,7 @@ import { MaquinasVirtualesService } from '../../services/maquinas-virtuales.serv
 export class MaquinasVirtualesComponent implements OnInit {
   maquinasVirtuales: MaquinaVirtual[] = [];
 
-  constructor(private maquinasService: MaquinasVirtualesService) { }
+  constructor(private maquinasService: MaquinasVirtualesService, private router:Router) { }
 
   ngOnInit(): void {
     this.obtenerMaquinasVirtuales();
@@ -19,7 +20,14 @@ export class MaquinasVirtualesComponent implements OnInit {
   obtenerMaquinasVirtuales(): void {
     this.maquinasService.getMaquinasVirtuales().subscribe(
       (maquinas) => {
-        this.maquinasVirtuales = maquinas;
+        if(maquinas === null)
+        {
+          console.log('No se detectó token de autenticación');
+          this.router.navigate([''])
+          
+        }else{
+          this.maquinasVirtuales = maquinas;
+        }
       },
       (error) => {
         console.error('Error al obtener las máquinas virtuales:', error);
