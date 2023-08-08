@@ -8,40 +8,43 @@ import { MaquinaVirtual } from '../model/MaquinaVirtual';
 })
 export class MaquinasVirtualesService {
   private apiUrl = 'http://localhost:3000/api/maquinasvirtuales';
+  private httpOptions = {}
+
+  obtenerHeader()
+  {
+    const token = localStorage.getItem('token') || '';
+
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': token
+      })
+    }
+  }
 
   constructor(private http: HttpClient) { }
 
   getMaquinasVirtuales(): Observable<MaquinaVirtual[] | null>{
-    const token = localStorage.getItem('token');
 
-    if(!token)
-    {
-      return of(null);
-    }
+    this.obtenerHeader();
 
-    const httpOptions = {
-    headers: new HttpHeaders({
-      'Authorization': token
-    })
-    }
-
-    return this.http.get<MaquinaVirtual[]>(this.apiUrl, httpOptions).pipe(
-      catchError((error) => {
-        console.log('Error al obtener las maquinas virtuales: ', error);
-        return of(null);
-      })
-    );
+    return this.http.get<MaquinaVirtual[]>(this.apiUrl, this.httpOptions);
   }
 
   crearMaquinaVirtual(maquinaVirtual: MaquinaVirtual): Observable<{ id: number }> {
-    return this.http.post<{ id: number }>(this.apiUrl, maquinaVirtual);
+    this.obtenerHeader();
+
+    return this.http.post<{ id: number }>(this.apiUrl, maquinaVirtual, this.httpOptions);
   }
 
   actualizarMaquinaVirtual(id: number, maquinaVirtual: MaquinaVirtual): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, maquinaVirtual);
+    this.obtenerHeader();
+
+    return this.http.put(`${this.apiUrl}/${id}`, maquinaVirtual, this.httpOptions);
   }
 
   eliminarMaquinaVirtual(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    this.obtenerHeader();
+
+    return this.http.delete(`${this.apiUrl}/${id}`, this.httpOptions);
   }
 }
