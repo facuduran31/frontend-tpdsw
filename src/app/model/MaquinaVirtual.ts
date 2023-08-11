@@ -4,3 +4,5 @@ export interface MaquinaVirtual {
     materias: string;
     programas: string;
 }
+
+// comentario de prueba
