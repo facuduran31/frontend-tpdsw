@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddMaquinaVirtualComponent } from './components/add-maquina-virtual/add-maquina-virtual.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
+import { LaboratoriosComponent } from './laboratorios/laboratorios.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LoginComponent } from './components/login/login.component';
     NavbarComponent,
     MaquinasVirtualesComponent,
     AddMaquinaVirtualComponent,
-    LoginComponent
+    LoginComponent,
+    LaboratoriosComponent
   ],
   imports: [
     BrowserModule,
