@@ -9,7 +9,9 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class LoginComponent {
 
-  constructor(private loginService:LoginService, private router:Router) {}
+  constructor(private loginService:LoginService, private router:Router) {
+    this.validarSesionActiva();
+  }
 
   email:string = "";
   password:string = "";
@@ -25,5 +27,13 @@ export class LoginComponent {
       },
       (error) => console.log(error)
     )
+  }
+
+  validarSesionActiva()
+  {
+    if(localStorage.getItem('token') != null)
+    {
+      this.router.navigate(['/maquinasvirtuales']);
+    }
   }
 }
