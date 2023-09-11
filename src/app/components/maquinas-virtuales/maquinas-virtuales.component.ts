@@ -23,7 +23,7 @@ export class MaquinasVirtualesComponent implements OnInit {
         if(maquinas === null)
         {
           console.log('No se detectó token de autenticación');
-          this.router.navigate([''])
+          //this.router.navigate([''])
           
         }else{
           this.maquinasVirtuales = maquinas;
