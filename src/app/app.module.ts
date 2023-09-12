@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddMaquinaVirtualComponent } from './components/add-maquina-virtual/add-maquina-virtual.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalContentComponent } from './components/modal-content/modal-content.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +19,15 @@ import { LoginComponent } from './components/login/login.component';
     NavbarComponent,
     MaquinasVirtualesComponent,
     AddMaquinaVirtualComponent,
-    LoginComponent
+    LoginComponent,
+    ModalContentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [MaquinasVirtualesService],
   bootstrap: [AppComponent]
