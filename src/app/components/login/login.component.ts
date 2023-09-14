@@ -28,18 +28,18 @@ export class LoginComponent {
       },
       (error) => {
         console.log(error);
-        this.openModal(); // Abre la ventana modal en caso de error
+        this.openModal();
       }
     )
   }
 
   openModal() {
-    const modalRef = this.modalService.open(ModalContentComponent); // Debes crear un componente para el contenido de la modal
+    const modalRef = this.modalService.open(ModalContentComponent);
     modalRef.componentInstance.name = 'Error al iniciar sesión';
     modalRef.componentInstance.message = 'El email o la contraseña son incorrectos, por favor verifique los datos ingresados.';
     modalRef.result.then((result) => {
       if (result === 'cerrar') {
-        this.router.navigate(['/']); // Puedes redirigir al usuario después de cerrar la modal
+        this.router.navigate(['/']);
       }
     });
   }
