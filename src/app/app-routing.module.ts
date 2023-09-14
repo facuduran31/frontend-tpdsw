@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'maquinasvirtuales/add', component: AddMaquinaVirtualComponent},
+  {path: 'maquinasvirtuales/editar/:id', component: AddMaquinaVirtualComponent},
   {path: 'maquinasvirtuales', component: MaquinasVirtualesComponent},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];

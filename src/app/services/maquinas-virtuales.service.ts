@@ -23,11 +23,26 @@ export class MaquinasVirtualesService {
 
   constructor(private http: HttpClient) { }
 
+  guardarMaquinaVirtual(maquinaVirtual: MaquinaVirtual, isEdit:boolean): Observable<{ id: number }> {
+    console.log('Guardando la máquina virtual:', maquinaVirtual);
+    console.log('¿Es edición?', isEdit);
+    if (isEdit == true) {
+      return this.actualizarMaquinaVirtual(maquinaVirtual.idMaquinaVirtual, maquinaVirtual);
+    } else {
+      return this.crearMaquinaVirtual(maquinaVirtual);
+    }
+  }
+
   getMaquinasVirtuales(): Observable<MaquinaVirtual[] | null>{
 
     this.obtenerHeader();
 
     return this.http.get<MaquinaVirtual[]>(this.apiUrl, this.httpOptions);
+  }
+
+  getMaquinaVirtual(id: number): Observable<MaquinaVirtual | null> {
+    this.obtenerHeader();
+    return this.http.get<MaquinaVirtual>(`${this.apiUrl}/${id}`, this.httpOptions);
   }
 
   crearMaquinaVirtual(maquinaVirtual: MaquinaVirtual): Observable<{ id: number }> {
