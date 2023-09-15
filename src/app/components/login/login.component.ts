@@ -39,16 +39,38 @@ export class LoginComponent {
     modalRef.componentInstance.message = 'El email o la contraseña son incorrectos, por favor verifique los datos ingresados.';
     modalRef.result.then((result) => {
       if (result === 'cerrar') {
-        this.router.navigate(['/']);
+        this.router.navigate(['']);
+      }
+    });
+  }
+
+  sesionExpirada(): void {
+    const modalRef = this.modalService.open(ModalContentComponent);
+    modalRef.componentInstance.name = 'Sesión expirada';
+    modalRef.componentInstance.message = 'Su sesión ha expirado, por favor inicie sesión nuevamente.';
+    modalRef.componentInstance.type = 'alert';
+    modalRef.componentInstance.buttonText = 'Aceptar';
+    modalRef.componentInstance.buttonClass = 'btn-primary';
+    modalRef.result.then((result) => {
+      if (result === 'Aceptar') {
+        this.router.navigate(['']);
       }
     });
   }
 
   validarSesionActiva()
   {
-    if(localStorage.getItem('token') != null)
+    const token = localStorage.getItem('token');
+    if(token != null)
     {
-      this.router.navigate(['/maquinasvirtuales']);
+      this.loginService.verifyToken(token).subscribe(
+        (response) => {
+          if(response.isTokenExpirado == true)
+          this.router.navigate(['']);
+        }
+      )
+    }else{
+      this.router.navigate(['']);
     }
   }
 }

@@ -10,6 +10,17 @@ export class LoginService {
 
   constructor(private http: HttpClient) { }
 
+  verifyToken(token:string): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      })
+    };
+
+    return this.http.get<any>(this.apiURL + '/verify', httpOptions);
+  }
+
   login(email: string, password: string): Observable<any> {
     const credentials = { email, password };
     const httpOptions = {

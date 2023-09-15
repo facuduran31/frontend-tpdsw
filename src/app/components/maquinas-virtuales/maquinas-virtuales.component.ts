@@ -19,10 +19,24 @@ export class MaquinasVirtualesComponent implements OnInit {
     this.obtenerMaquinasVirtuales();
   }
 
+  sesionExpirada(): void {
+    const modalRef = this.modalService.open(ModalContentComponent);
+    modalRef.componentInstance.name = 'Sesión expirada';
+    modalRef.componentInstance.message = 'Su sesión ha expirado, por favor inicie sesión nuevamente.';
+    modalRef.componentInstance.type = 'alert';
+    modalRef.componentInstance.buttonText = 'Aceptar';
+    modalRef.componentInstance.buttonClass = 'btn-primary';
+    modalRef.result.then((result) => {
+      if (result === 'Aceptar') {
+        this.router.navigate(['']);
+      }
+    });
+  }
+
   openModal(maquinaVirtual:MaquinaVirtual) {
     const modalRef = this.modalService.open(ModalContentComponent);
-    modalRef.componentInstance.name = '¿Seguro que desea eliminar la máquina virtual?';
-    modalRef.componentInstance.message = 'Confirme la acción antes de continuar.';
+    modalRef.componentInstance.name = 'Confirme la acción antes de continuar.';
+    modalRef.componentInstance.message = '¿Seguro que desea eliminar la máquina virtual?';
     modalRef.componentInstance.type = 'confirm';
     modalRef.componentInstance.buttonText = 'Eliminar';
     modalRef.componentInstance.buttonClass = 'btn-danger';
@@ -50,15 +64,20 @@ export class MaquinasVirtualesComponent implements OnInit {
       (maquinas) => {
         if(maquinas === null)
         {
-          console.log('No se detectó token de autenticación');
-          //this.router.navigate([''])
-          
+          this.sesionExpirada();
+          this.router.navigate([''])
         }else{
           this.maquinasVirtuales = maquinas;
         }
       },
       (error) => {
-        console.log('Error al obtener las máquinas virtuales:', error);
+        if(error.status === 401)
+        {
+          this.sesionExpirada();
+          this.router.navigate([''])
+        }else{
+          console.log('Error al obtener las máquinas virtuales:', error);
+        }
       }
     );
   }

@@ -1,40 +1,20 @@
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Error al iniciar sesión</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" routerLink="../">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          El email o la contraseña son incorrectos, por favor verifique los datos ingresados.
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" routerLink="../">Cerrar</button>
-        </div>
-      </div>
-    </div>
-</div>
-
 <div class="container mt-5 rounded p-5" id="container-login">
-    <div class="row">
-        <h1 class="text-center">BIENVENIDO</h1>
-        <h4 class="text-center">Acceso al sistema</h4>
-    </div>
-    <div class="row">
-        <div class="form-group">
-            <label for="InputEmail" class="form-label mt-4">Email</label>
-            <input type="email" [(ngModel)]="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Ingrese su correo electrónico">
-        </div>
-    </div>
-    <div class="form-group">
+  <div class="row">
+      <h1 class="text-center">BIENVENIDO</h1>
+      <h4 class="text-center">Acceso al sistema</h4>
+  </div>
+  <div class="row">
+      <div class="form-group">
+          <label for="InputEmail" class="form-label mt-4">Email</label>
+          <input type="email" [(ngModel)]="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Ingrese su correo electrónico" (keyup.enter)="login()">
+      </div>
+  </div>
+  <div class="form-group">
       <label for="InputPassword" class="form-label mt-4">Contraseña</label>
-      <input type="password" [(ngModel)]="password" class="form-control" id="InputPassword" placeholder="Ingrese su contraseña" autocomplete="off">
-    </div>
+      <input type="password" [(ngModel)]="password" class="form-control" id="InputPassword" placeholder="Ingrese su contraseña" autocomplete="off" (keyup.enter)="login()">
+  </div>
 
-    <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-primary mt-5" (click)="login()">Ingresar</button>
-    </div>
+  <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary mt-5" (click)="login()">Ingresar</button>
+  </div>
 </div>
