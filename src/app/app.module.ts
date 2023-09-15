@@ -10,13 +10,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddMaquinaVirtualComponent } from './components/add-maquina-virtual/add-maquina-virtual.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
-<<<<<<< HEAD
 import { LaboratoriosComponent } from './laboratorios/laboratorios.component';
-=======
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from './components/modal-content/modal-content.component';
 import { FooterComponent } from './components/footer/footer.component';
->>>>>>> 548524f58251281895adca237af6a8a014391f0b
 
 @NgModule({
   declarations: [
@@ -26,12 +23,9 @@ import { FooterComponent } from './components/footer/footer.component';
     AddMaquinaVirtualComponent,
     LoginComponent,
     ModalContentComponent,
-    FooterComponent
-<<<<<<< HEAD
-    LaboratoriosComponent
-=======
-    ModalContentComponent
->>>>>>> 548524f58251281895adca237af6a8a014391f0b
+    FooterComponent,
+    LaboratoriosComponent,
+    ModalContentComponent,
   ],
   imports: [
     BrowserModule,
