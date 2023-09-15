@@ -1,11 +1,10 @@
-
 <app-navbar></app-navbar>
 
 <div class="container mt-5">
   <div class="d-flex flex-row-reverse mb-5">
-    <button type="button" class="btn btn-primary" routerLink="add">+ Agregar Maquina Virtual</button>
+    <button type="button" class="btn btn-primary rounded shadow-lg" routerLink="add">+ Agregar Maquina Virtual</button>
   </div>
-  <div class="table-responsive">
+  <div class="table-responsive rounded shadow-lg">
     <table class="table table-dark">
         <thead>
           <tr>
@@ -13,28 +12,27 @@
             <th scope="col">Sistema Operativo</th>
             <th scope="col">Materias</th>
             <th scope="col">Programas</th>
-            <th scope="col">
-              Acciones
-            </th>
+            <th scope="col">Acciones</th>
           </tr>
         </thead>
-        <tbody>
-            <tr class="table table-default" *ngFor="let item of maquinasVirtuales">
-                <th scope="row">{{item.idMaquinaVirtual}}</th>
-                <td>{{item.sistemaOperativo}}</td>
-                <td>{{item.materias}}</td>
-                <td>{{item.programas}}</td>
-                <td>
-                  <button type="button" class="btn btn-warning me-2 p-2">
-                    <i class="fas fa-edit btn-icon"></i>
-                  </button>
-                
-                <!-- Botón para Borrar -->
-                  <button type="button" class="btn btn-danger p-2">
-                    <i class="fas fa-trash-alt btn-icon"></i>
-                  </button>
-                </td>
-            </tr>
+        <tbody class="table-light border">
+          <tr *ngFor="let item of maquinasVirtuales">
+            <th scope="row">{{item.idMaquinaVirtual}}</th>
+            <td>{{item.sistemaOperativo}}</td>
+            <td>{{item.materias}}</td>
+            <td>{{item.programas}}</td>
+            <td>
+              <!-- Botón para Editar -->
+              <a [routerLink]="['./editar', item.idMaquinaVirtual]" class="btn btn-warning rounded shadow me-2 mb-2">
+                <i class="fas fa-edit btn-icon" style="color: aliceblue;"></i>
+              </a>
+              
+              <!-- Botón para Borrar -->
+              <button (click)="openModal(item)" type="button" class="btn btn-danger rounded shadow text-secondary mb-2">
+                <i class="fas fa-trash-alt btn-icon" style="color: aliceblue;"></i>
+              </button>
+            </td>
+          </tr>
         </tbody>
     </table>
   </div>

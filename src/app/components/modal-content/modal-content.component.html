@@ -9,6 +9,7 @@
     <p>{{ message }}</p>
   </div>
   <div class="modal-footer">
+    <button type="button" [classList]="type == 'confirm' ? 'btn btn-primary' : 'd-none'" (click)="borrar('cerrar')">Confirmar</button>
     <button type="button" class="btn btn-secondary" (click)="close('cerrar')">Cerrar</button>
   </div>
   

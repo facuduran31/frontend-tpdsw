@@ -8,6 +8,7 @@ import { LaboratoriosComponent } from './laboratorios/laboratorios.component';
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'maquinasvirtuales/add', component: AddMaquinaVirtualComponent},
+  {path: 'maquinasvirtuales/editar/:id', component: AddMaquinaVirtualComponent},
   {path: 'maquinasvirtuales', component: MaquinasVirtualesComponent},
   {path: 'laboratorios', component: LaboratoriosComponent},
   {path: '**', redirectTo: '', pathMatch: 'full'}

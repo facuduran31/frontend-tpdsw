@@ -9,8 +9,13 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class ModalContentComponent {
   @Input() name?: string; // Propiedad para el título de la modal
   @Input() message?: string; // Propiedad para el mensaje de la modal
+  @Input() type?: string; // Propiedad para el tipo de modal
 
   constructor(public activeModal: NgbActiveModal) {}
+
+  borrar(action: string) {
+    this.activeModal.close('Eliminar');
+  }
 
   // Función para cerrar la modal
   close(action: string) {

@@ -15,6 +15,7 @@ import { LaboratoriosComponent } from './laboratorios/laboratorios.component';
 =======
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from './components/modal-content/modal-content.component';
+import { FooterComponent } from './components/footer/footer.component';
 >>>>>>> 548524f58251281895adca237af6a8a014391f0b
 
 @NgModule({
@@ -24,6 +25,8 @@ import { ModalContentComponent } from './components/modal-content/modal-content.
     MaquinasVirtualesComponent,
     AddMaquinaVirtualComponent,
     LoginComponent,
+    ModalContentComponent,
+    FooterComponent
 <<<<<<< HEAD
     LaboratoriosComponent
 =======
