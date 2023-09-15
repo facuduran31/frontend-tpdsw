@@ -29,7 +29,6 @@ export class MaquinasVirtualesComponent implements OnInit {
     modalRef.result.then((result) => {
       if (result === 'Eliminar') {
         this.borrarMaquinaVirtual(maquinaVirtual);
-        this.router.navigate(['/']);
       }
     });
   }
