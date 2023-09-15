@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from './components/modal-content/modal-content.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ModalContentComponent } from './components/modal-content/modal-content.
     MaquinasVirtualesComponent,
     AddMaquinaVirtualComponent,
     LoginComponent,
-    ModalContentComponent
+    ModalContentComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

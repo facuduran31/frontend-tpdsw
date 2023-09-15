@@ -23,12 +23,12 @@
             <td>{{item.programas}}</td>
             <td>
               <!-- Botón para Editar -->
-              <a [routerLink]="['./editar', item.idMaquinaVirtual]" class="btn btn-warning rounded me-2 mb-2">
+              <a [routerLink]="['./editar', item.idMaquinaVirtual]" class="btn btn-warning rounded shadow me-2 mb-2">
                 <i class="fas fa-edit btn-icon" style="color: aliceblue;"></i>
               </a>
               
               <!-- Botón para Borrar -->
-              <button (click)="openModal(item)" type="button" class="btn btn-danger rounded text-secondary mb-2">
+              <button (click)="openModal(item)" type="button" class="btn btn-danger rounded shadow text-secondary mb-2">
                 <i class="fas fa-trash-alt btn-icon" style="color: aliceblue;"></i>
               </button>
             </td>
