@@ -13,6 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from './components/modal-content/modal-content.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { PaneldocentesComponent } from './components/paneldocentes/paneldocentes.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { FooterComponent } from './components/footer/footer.component';
     AddMaquinaVirtualComponent,
     LoginComponent,
     ModalContentComponent,
-    FooterComponent
+    FooterComponent,
+    PaneldocentesComponent
   ],
   imports: [
     BrowserModule,
