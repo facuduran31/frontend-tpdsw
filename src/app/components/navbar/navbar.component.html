@@ -1,22 +1,24 @@
 <nav class="navbar navbar-expand-lg bg-primary shadow" data-bs-theme="dark" style="margin: 0;">
-    <a class="navbar-brand ms-3" routerLink="./">Sala de Encargados</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="./">Inicio</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="../maquinasvirtuales">Maquinas virtuales</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="../laboratorios">Laboratorios</a>
-        </li>
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" href="#">Requerimientos</a>
-        </li>
-      </ul>
-    </div>
+  <a class="navbar-brand ms-3" routerLink="./">Sala de Encargados</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="./">Inicio</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="../maquinasvirtuales">Maquinas virtuales</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="../laboratorios">Laboratorios</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" href="#">Requerimientos</a>
+      </li>
+    </ul>
+    <!-- Agrega el botón de logout -->
+    <button class="btn btn-danger rounded shadow me-3" (click)="logout()"><i class="fas fa-sign-out"></i> Logout</button>
+  </div>
 </nav>
