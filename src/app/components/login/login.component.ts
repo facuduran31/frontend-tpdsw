@@ -24,7 +24,7 @@ export class LoginComponent {
       (response) => {
         this.token = response.token;
         localStorage.setItem('token', this.token);
-        this.router.navigate(['/maquinasvirtuales']);
+        this.validarSesionActiva();
       },
       (error) => {
         console.log(error);
@@ -66,7 +66,17 @@ export class LoginComponent {
       this.loginService.verifyToken(token).subscribe(
         (response) => {
           if(response.isTokenExpirado == true)
-          this.router.navigate(['']);
+          {
+            this.router.navigate(['']);
+          }else{
+            console.log(response.usuarioAutenticado.tipoUsuario)
+            if(response.usuarioAutenticado.tipoUsuario === 'Encargado')
+            {
+              this.router.navigate(['/maquinasvirtuales']);
+            }else{
+              this.router.navigate(['/panel']);
+            }
+          }
         }
       )
     }else{
