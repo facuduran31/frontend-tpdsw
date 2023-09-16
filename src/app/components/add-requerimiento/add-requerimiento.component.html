@@ -1,1 +1,21 @@
-<p>add-requerimiento works!</p>
+<div class="container mt-5">
+  <div class="d-flex flex-row-reverse">
+    <button type="button" class="close btn fs-4 text-align-right" routerLink="../" aria-label="Close" id="btnClose">
+       <span aria-hidden="true">&times;</span>
+     </button>
+   </div>   
+   <form>
+   <fieldset>
+      <legend>Crear un nuevo requerimiento</legend>
+      <div class="form-group">
+        <label for="exampleSelect1" class="form-label mt-4">Tipo de requerimiento:</label>
+        <select class="form-select" id="exampleSelect1">
+          <option>Reserva de laboratorio</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#exampleModal">Enviar</button>
+    </fieldset>
+  </form>
+</div>
+  
