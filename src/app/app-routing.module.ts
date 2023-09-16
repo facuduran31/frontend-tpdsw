@@ -5,6 +5,7 @@ import { AddMaquinaVirtualComponent } from './components/add-maquina-virtual/add
 import { LoginComponent } from './components/login/login.component';
 import { PaneldocentesComponent } from './components/paneldocentes/paneldocentes.component';
 import { LaboratoriosComponent } from './components/laboratorios/laboratorios.component';
+import { AddRequerimientoComponent } from './components/add-requerimiento/add-requerimiento.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'maquinasvirtuales/editar/:id', component: AddMaquinaVirtualComponent},
   {path: 'maquinasvirtuales', component: MaquinasVirtualesComponent},
   {path: 'laboratorios', component: LaboratoriosComponent},
+  {path: 'nuevorequerimiento', component: AddRequerimientoComponent},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

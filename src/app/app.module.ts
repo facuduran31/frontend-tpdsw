@@ -15,6 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from './components/modal-content/modal-content.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PaneldocentesComponent } from './components/paneldocentes/paneldocentes.component';
+import { AddRequerimientoComponent } from './components/add-requerimiento/add-requerimiento.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { PaneldocentesComponent } from './components/paneldocentes/paneldocentes
     PaneldocentesComponent,
     LaboratoriosComponent,
     ModalContentComponent,
+    AddRequerimientoComponent,
   ],
   imports: [
     BrowserModule,
