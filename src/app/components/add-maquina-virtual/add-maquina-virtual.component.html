@@ -1,35 +1,3 @@
-<!-- Modal -->
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalLabel">{{isEdit ? 'Edición' : 'Carga'}} completa</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" routerLink="../">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Se ha {{isEdit ? 'editado' : 'cargado'}} con éxito la máquina virtual con los siguientes datos:
-        <br>
-          <b>
-            Sistema Operativo: {{maquinaVirtual.sistemaOperativo}}
-          </b>
-        <br>
-          <b>
-            Materias: {{maquinaVirtual.materias}}
-          </b>
-        <br>
-          <b>
-            Programas: {{maquinaVirtual.programas}}
-          </b>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal" routerLink="../">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="container mt-5">
   <div class="d-flex flex-row-reverse">
     <button type="button" class="close btn fs-4 text-align-right" routerLink="../" aria-label="Close" id="btnClose">
@@ -51,7 +19,7 @@
         <label for="programas" class="form-label mt-4">Programas</label>
         <textarea class="form-control" id="programas" name="programas" rows="3" placeholder="MySql Workbench, Visual Studio Code, Smalltalk" [(ngModel)]="maquinaVirtual.programas"></textarea>
       </div>
-      <button type="button" class="btn btn-primary mt-4" data-toggle="modal" data-target="#exampleModal" (click)="onSubmit()">Enviar</button>
+      <button type="button" class="btn btn-primary mt-4" (click)="onSubmit()">Enviar</button>
     </fieldset>
   </form>
 </div>

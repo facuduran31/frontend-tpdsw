@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MaquinaVirtual } from 'src/app/model/MaquinaVirtual';
 import { MaquinasVirtualesService } from 'src/app/services/maquinas-virtuales.service';
+import { ModalContentComponent } from '../modal-content/modal-content.component';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-add-maquina-virtual',
@@ -19,7 +21,39 @@ export class AddMaquinaVirtualComponent implements OnInit {
 
   isEdit: boolean = false;
   
-  constructor(private maquinasService: MaquinasVirtualesService, private route: ActivatedRoute) {
+  constructor(private maquinasService: MaquinasVirtualesService, private route: ActivatedRoute, private modalService:NgbModal, private router: Router) { }
+
+  openMaquinaGuardadaModal(isEdit:boolean): void {
+    const modalRef = this.modalService.open(ModalContentComponent);
+    if(isEdit){
+      modalRef.componentInstance.name = 'Edición completa';
+      modalRef.componentInstance.message = 'Se ha editado con éxito la máquina virtual';
+    }else{
+      modalRef.componentInstance.name = 'Carga completa';
+      modalRef.componentInstance.message = 'Se ha creado con éxito la máquina virtual';
+    }
+    modalRef.componentInstance.type = 'alert';
+    modalRef.componentInstance.buttonText = 'Aceptar';
+    modalRef.componentInstance.buttonClass = 'btn-primary';
+    modalRef.result.then((result) => {
+      if (result === 'Aceptar') {
+        this.router.navigate(['']);
+      }
+    });
+  }
+
+  openErrorModal(): void {
+    const modalRef = this.modalService.open(ModalContentComponent);
+    modalRef.componentInstance.name = 'Se ha producido un error';
+    modalRef.componentInstance.message = 'No se ha podido procesar la solicitud.';
+    modalRef.componentInstance.type = 'alert';
+    modalRef.componentInstance.buttonText = 'Aceptar';
+    modalRef.componentInstance.buttonClass = 'btn-primary';
+    modalRef.result.then((result) => {
+      if (result === 'Aceptar') {
+        this.router.navigate(['']);
+      }
+    });
   }
   
   ngOnInit(): void {
@@ -50,10 +84,10 @@ export class AddMaquinaVirtualComponent implements OnInit {
   onSubmit(): void {
     this.maquinasService.guardarMaquinaVirtual(this.maquinaVirtual, this.isEdit).subscribe(
       response => {
-        console.log('ID de la nueva máquina:', response.id);
+        this.openMaquinaGuardadaModal(this.isEdit);
       },
       error => {
-        console.error('Error al crear la máquina virtual:', error);
+        this.openErrorModal();
       }
     );
   }
