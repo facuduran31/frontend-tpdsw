@@ -8,13 +8,88 @@
    <fieldset>
       <legend>Crear un nuevo requerimiento</legend>
       <div class="form-group">
-        <label for="exampleSelect1" class="form-label mt-4">Tipo de requerimiento:</label>
-        <select class="form-select" id="exampleSelect1">
+        <label for="selectTipoRequerimiento" class="form-label mt-4">Tipo de requerimiento:</label>
+        <select class="form-select" id="selectTipoRequerimiento" [(ngModel)]='requerimiento.tipoRequerimiento' name="tipoRequerimiento">
           <option>Reserva de laboratorio</option>
           <option>Otro</option>
         </select>
+        
+        <!-- ========== Si se selecciona "Reserva de laboratorio" ========== -->
+        <div class="form-group" *ngIf="requerimiento.tipoRequerimiento === 'Reserva de laboratorio' ">
+          <label for="selectTipoReserva" class="form-label mt-4">Tipo de reserva:</label>
+          <select class="form-select" id="selectTipoReserva" [(ngModel)]='requerimiento.tipoReserva' name="tipoReserva">
+            <option>Cuatrimestral</option>
+            <option>Anual</option>
+            <option>Excepcional</option>
+          </select>
+          <div class="form-group">
+            <label for="selectFechaInicio" class="form-label mt-4">Fecha {{requerimiento.tipoReserva == 'Anual' || requerimiento.tipoReserva == 'Cuatrimestral' ? 'de inicio' : ''}} de la reserva:</label>
+            <input type="date" id="selectFechaInicio" class="form-control" name="selectFechaInicio" [(ngModel)]="requerimiento.fechaInicio">
+          </div>
+          <!-- ========== Si la reserva es anual o cuatrimestral ========== -->
+          <div class="form-group" *ngIf="requerimiento.tipoReserva == 'Anual' || requerimiento.tipoReserva == 'Cuatrimestral'">
+            <label for="selectFechaFin" class="form-label mt-4">Fecha de fin de la reserva:</label>
+            <input type="date" id="selectFechaFin" class="form-control" name="selectFechaFin" [(ngModel)]="requerimiento.fechaFin">
+          </div>
+          <!-- ========== End Section ========== -->
+          <div class="form-group">
+            <label for="sistemaOperativo" class="form-label mt-4">Materia</label>
+            <input type="text" class="form-control" id="materia" name="materia" [(ngModel)]="requerimiento.materia">
+          </div>
+          <div class="form-group">
+            <label for="horaInicio">Hora de inicio:</label>
+            <input type="time" class="form-control" id="horaInicio" name="horaInicio" [(ngModel)]="requerimiento.horaInicio">
+          </div>       
+          <div class="form-group">
+            <label for="horaFin">Hora de fin:</label>
+            <input type="time" class="form-control" id="horaFin" name="horaFin" [(ngModel)]="requerimiento.materia">
+          </div>
+          <div class="form-group">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="hdmi" name="hdmi" [(ngModel)]="requerimiento.hdmi">
+              <label class="form-check-label" for="hdmi">
+                HDMI
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="vga" name="vga" [(ngModel)]="requerimiento.vga">
+              <label class="form-check-label" for="vga">
+                VGA
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="proyector" name="proyector" [(ngModel)]="requerimiento.proyector">
+              <label class="form-check-label" for="proyector">
+                Proyector
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="zapatilla" name="zapatilla" [(ngModel)]="requerimiento.zapatilla">
+              <label class="form-check-label" for="zapatilla">
+                Zapatilla
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="mouse" name="mouse" [(ngModel)]="requerimiento.mouse">
+              <label class="form-check-label" for="mouse">
+                Mouse
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="requerimiento" class="form-label mt-4">Requerimientos adicionales:</label>
+            <textarea class="form-control" id="requerimiento" name="requerimiento" rows="3" placeholder="Solicitudes adicionales (software específico, laboratorio de preferencia, etc)" [(ngModel)]="requerimiento.descripcion"></textarea>
+          </div>
+        </div>    
+        <!-- ========== End Section ========== -->
+        <!-- ========== Si se selecciona "Otro" ========== -->
+        <div class="form-group" *ngIf="requerimiento.tipoRequerimiento === 'Otro' ">
+          <label for="requerimiento" class="form-label mt-4">Requerimiento:</label>
+          <textarea class="form-control" id="requerimiento" name="requerimiento" rows="3" placeholder="Describa cual es su requerimiento para que este ticket sea atendido por un Encargado" [(ngModel)]="requerimiento.descripcion"></textarea>
+        </div>
+        <!-- ========= End Section ========== -->
       </div>
-      <button type="button" class="btn btn-primary mt-4">Enviar</button>
+      <button type="button" class="btn btn-primary mt-4" (click)="submit()">Enviar</button>
     </fieldset>
   </form>
 </div>

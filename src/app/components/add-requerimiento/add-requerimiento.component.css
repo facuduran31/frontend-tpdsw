@@ -1,0 +1,21 @@
+/* Cambiar el color del checkbox cuando está seleccionado */
+.form-check-input{
+    background-color: rgb(62, 62, 62);
+    border: 2px solid black;
+}
+
+.form-check-input:checked {
+    background-color: #191818; /* Cambia el color de fondo cuando está seleccionado */
+    border: 2px solid #2c2c2c; /* Cambia el grosor y el color del borde cuando está seleccionado */
+  }
+
+  /* Cambiar el color del checkbox cuando se pasa el cursor sobre él */
+  .form-check-input:hover {
+    background-color: #666666; /* Cambia el color de fondo cuando se pasa el cursor sobre él */
+    border: 2px solid #000000; /* Cambia el grosor y el color del borde cuando se pasa el cursor sobre él */
+  }
+
+  /* Cambiar el color del label cuando se pasa el cursor sobre él */
+  .form-check-label:hover {
+    color: #c4c4c4; /* Cambia el color del texto cuando se pasa el cursor sobre el label */
+  }
