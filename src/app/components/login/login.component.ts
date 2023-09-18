@@ -69,7 +69,6 @@ export class LoginComponent {
           {
             this.router.navigate(['']);
           }else{
-            console.log(response.usuarioAutenticado.tipoUsuario)
             if(response.usuarioAutenticado.tipoUsuario === 'Encargado')
             {
               this.router.navigate(['/maquinasvirtuales']);
