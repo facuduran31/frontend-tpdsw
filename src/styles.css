@@ -12,12 +12,12 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
- body {
-  background-image: url('./assets/background.gif'); /* Ruta a tu imagen de fondo */
+ /*fondo animado body {
+  background-image: url('./assets/background.gif'); /* Ruta a tu imagen de fondo 
   background-repeat: no-repeat;
-  background-size: cover; /* Ajustar la imagen para cubrir toda la pantalla */
-  background-attachment: fixed; /* Fijar la imagen de fondo */
-}
+  background-size: cover; /* Ajustar la imagen para cubrir toda la pantalla 
+  background-attachment: fixed; /* Fijar la imagen de fondo 
+} */
 
  @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap");
  :root {
