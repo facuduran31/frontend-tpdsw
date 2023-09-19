@@ -46,7 +46,6 @@ export class RequerimientosService {
 
   crearRequerimiento(requerimiento: Requerimiento): Observable<{ id: number }> {
     this.obtenerHeader();
-
     return this.http.post<{ id: number }>(this.apiUrl, requerimiento, this.httpOptions);
   }
 

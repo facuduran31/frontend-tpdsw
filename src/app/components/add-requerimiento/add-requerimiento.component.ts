@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Requerimiento } from '../../model/Requerimiento';
+import { RequerimientosService } from 'src/app/services/requerimientos.service';
 
 @Component({
   selector: 'app-add-requerimiento',
@@ -30,10 +31,13 @@ export class AddRequerimientoComponent {
     zapatilla: false
   };
 
-  constructor() { }
+  constructor(private requerimientoService: RequerimientosService) { }
 
   submit()
   {
-    console.log(this.requerimiento.tipoRequerimiento);
+    this.requerimientoService.guardarRequerimiento(this.requerimiento, false).subscribe(
+      response => console.log(response),
+      error => console.log(error)
+    );
   }
 }
