@@ -7,7 +7,7 @@ import { Laboratorio } from '../model/Laboratorio';
   providedIn: 'root'
 })
 export class LaboratorioService {
-  private apiUrl = 'http://localhost:3000/api/Laboratorio';
+  private apiUrl = 'http://localhost:3000/api/laboratorios';
   private httpOptions = {}
 
   obtenerHeader()
@@ -31,7 +31,7 @@ export class LaboratorioService {
     }
   }
 
-  getMaquinasVirtuales(): Observable<Laboratorio[] | null>{
+  getLaboratorios(): Observable<Laboratorio[] | null>{
 
     this.obtenerHeader();
 
