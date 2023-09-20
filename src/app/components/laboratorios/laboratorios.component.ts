@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Laboratiorio } from 'src/app/model/Laboratorio';
+import { Laboratorio } from 'src/app/model/Laboratorio';
 import { ModalContentComponent } from '../modal-content/modal-content.component';
 
 @Component({
@@ -12,9 +12,9 @@ export class LaboratoriosComponent {
 
   constructor(private modalService:NgbModal) { }
 
-  laboratorios:Laboratiorio[] = [];
+  laboratorios:Laboratorio[] = [];
 
-  openModal(laboratorio:Laboratiorio) {
+  openModal(laboratorio:Laboratorio) {
     const modalRef = this.modalService.open(ModalContentComponent);
     modalRef.componentInstance.name = 'Confirme la acción antes de continuar.';
     modalRef.componentInstance.message = '¿Seguro que desea eliminar la máquina virtual?';
@@ -28,7 +28,7 @@ export class LaboratoriosComponent {
     });
   }
 
-  borrarLaboratorio(laboratorio:Laboratiorio): void {
+  borrarLaboratorio(laboratorio:Laboratorio): void {
     console.log(laboratorio)
   }
 }
