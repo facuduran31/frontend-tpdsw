@@ -1,25 +1,35 @@
 <app-navbar></app-navbar>
+
 <div class="container mt-5">
   <div class="d-flex flex-row-reverse mb-5">
-    <button type="button" class="btn btn-primary rounded shadow-lg" routerLink="add">+ Agregar Laboratorios</button>
+    <button type="button" class="btn btn-primary rounded shadow-lg" routerLink="add">+ Agregar Laboratorio</button>
   </div>
- 
   <div class="table-responsive rounded shadow-lg">
-    <table class = "table table-dark">
-      <thead>
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">Nombre</th>
-          <th scope="col">Acciones</th>
-        </tr>
-      </thead>
-      <tbody class="table-light border">
-        <tr>
-          <td>a</td>
-          <td>b</td>
-          <td>c</td>
-        </tr>
-      </tbody>
+    <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody class="table-light border">
+          <tr *ngFor="let item of laboratorios">
+            <td scope="row">{{item.idLaboratorio}}</td>
+            <td>{{item.nombreLaboratorio}}</td>
+            <td>
+              <!-- Botón para Editar -->
+              <a [routerLink]="['./editar', item.idLaboratorio]" class="btn btn-warning rounded shadow me-2 mb-2">
+                <i class="fas fa-edit btn-icon" style="color: aliceblue;"></i>
+              </a>
+              
+              <!-- Botón para Borrar -->
+              <button (click)="openModal(item)" type="button" class="btn btn-danger rounded shadow text-secondary mb-2">
+                <i class="fas fa-trash-alt btn-icon" style="color: aliceblue;"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
     </table>
   </div>
 </div>

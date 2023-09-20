@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Laboratiorio } from 'src/app/model/Laboratorio';
 
 @Component({
   selector: 'app-laboratorios',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class LaboratoriosComponent {
 
+  constructor() { }
+
+  laboratorios:Laboratiorio[] = [];
+
+  openModal(laboratorio:Laboratiorio) {
+
+  }
 }
