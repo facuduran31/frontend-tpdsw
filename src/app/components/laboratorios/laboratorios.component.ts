@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Laboratorio } from 'src/app/model/Laboratorio';
 import { ModalContentComponent } from '../modal-content/modal-content.component';
+import { LaboratorioService } from 'src/app/services/laboratorios.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-laboratorios',
@@ -10,9 +12,23 @@ import { ModalContentComponent } from '../modal-content/modal-content.component'
 })
 export class LaboratoriosComponent {
 
-  constructor(private modalService:NgbModal) { }
+  constructor(private router:Router, private modalService:NgbModal, private laboratoriosService:LaboratorioService) { }
 
   laboratorios:Laboratorio[] = [];
+
+  sesionExpirada(): void {
+    const modalRef = this.modalService.open(ModalContentComponent);
+    modalRef.componentInstance.name = 'Sesión expirada';
+    modalRef.componentInstance.message = 'Su sesión ha expirado, por favor inicie sesión nuevamente.';
+    modalRef.componentInstance.type = 'alert';
+    modalRef.componentInstance.buttonText = 'Aceptar';
+    modalRef.componentInstance.buttonClass = 'btn-primary';
+    modalRef.result.then((result) => {
+      if (result === 'Aceptar') {
+        this.router.navigate(['']);
+      }
+    });
+  }
 
   openModal(laboratorio:Laboratorio) {
     const modalRef = this.modalService.open(ModalContentComponent);
@@ -29,6 +45,37 @@ export class LaboratoriosComponent {
   }
 
   borrarLaboratorio(laboratorio:Laboratorio): void {
-    console.log(laboratorio)
+    this.laboratoriosService.eliminarLaboratorio(laboratorio.idLaboratorio).subscribe(
+      (maquinaVirtual) => {
+        console.log(maquinaVirtual)
+        this.obtenerLaboratorios();
+      },
+      (error) => {
+        console.log('Error al borrar el laboratorio:', error);
+      }
+    );
+  }
+
+  obtenerLaboratorios(): void {
+    this.laboratoriosService.getLaboratorios().subscribe(
+      (laboratorios) => {
+        if(laboratorios === null)
+        {
+          this.sesionExpirada();
+          this.router.navigate([''])
+        }else{
+          this.laboratorios = laboratorios;
+        }
+      },
+      (error) => {
+        if(error.status === 401)
+        {
+          this.sesionExpirada();
+          this.router.navigate([''])
+        }else{
+          console.log('Error al obtener los laboratorios:', error);
+        }
+      }
+    );
   }
 }
