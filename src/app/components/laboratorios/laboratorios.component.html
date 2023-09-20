@@ -18,11 +18,14 @@
             <td scope="row">{{item.idLaboratorio}}</td>
             <td>{{item.nombreLaboratorio}}</td>
             <td>
+              <!-- Botón para Visualizar lab -->
+              <button [routerLink]="['./editar', item.idLaboratorio]" class="btn btn-primary rounded shadow me-2 mb-2">
+                <i class="fas fa-eye btn-icon" style="color: aliceblue;"></i>
+              </button>
               <!-- Botón para Editar -->
-              <a [routerLink]="['./editar', item.idLaboratorio]" class="btn btn-warning rounded shadow me-2 mb-2">
+              <button [routerLink]="['./editar', item.idLaboratorio]" class="btn btn-warning rounded shadow me-2 mb-2">
                 <i class="fas fa-edit btn-icon" style="color: aliceblue;"></i>
-              </a>
-              
+              </button>
               <!-- Botón para Borrar -->
               <button (click)="openModal(item)" type="button" class="btn btn-danger rounded shadow text-secondary mb-2">
                 <i class="fas fa-trash-alt btn-icon" style="color: aliceblue;"></i>
