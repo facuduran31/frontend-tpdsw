@@ -1,1 +1,17 @@
-<p>add-laboratorio works!</p>
+<div class="container mt-5">
+    <div class="d-flex flex-row-reverse">
+      <button type="button" class="close btn fs-4 text-align-right" routerLink="../" aria-label="Close" id="btnClose">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>   
+    <form>
+      <fieldset>
+        <legend>{{isEdit ? 'Editar' : 'Cargar'}} un laboratorio</legend>
+        <div class="form-group">
+          <label for="nombreLaboratorio" class="form-label mt-4">Nombre:</label>
+          <input type="text" class="form-control" id="nombreLaboratorio" name="nombreLaboratorio" placeholder="Microsoft" [(ngModel)]="laboratorio.nombreLaboratorio">
+        </div>
+        <button type="button" class="btn btn-primary mt-4" (click)="onSubmit()">Enviar</button>
+      </fieldset>
+    </form>
+  </div>

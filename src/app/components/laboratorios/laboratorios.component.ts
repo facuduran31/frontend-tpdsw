@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Laboratorio } from 'src/app/model/Laboratorio';
 import { ModalContentComponent } from '../modal-content/modal-content.component';
@@ -10,11 +10,15 @@ import { Router } from '@angular/router';
   templateUrl: './laboratorios.component.html',
   styleUrls: ['./laboratorios.component.css']
 })
-export class LaboratoriosComponent {
+export class LaboratoriosComponent implements OnInit{
 
   constructor(private router:Router, private modalService:NgbModal, private laboratoriosService:LaboratorioService) { }
 
   laboratorios:Laboratorio[] = [];
+
+  ngOnInit(): void {
+    this.obtenerLaboratorios();
+  }
 
   sesionExpirada(): void {
     const modalRef = this.modalService.open(ModalContentComponent);
