@@ -16,6 +16,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PaneldocentesComponent } from './components/paneldocentes/paneldocentes.component';
 import { AddRequerimientoComponent } from './components/add-requerimiento/add-requerimiento.component';
 import { AddLaboratorioComponent } from './components/add-laboratorio/add-laboratorio.component';
+import { VerLaboratorioComponent } from './components/ver-laboratorio/ver-laboratorio.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AddLaboratorioComponent } from './components/add-laboratorio/add-labora
     LaboratoriosComponent,
     ModalContentComponent,
     AddRequerimientoComponent,
-    AddLaboratorioComponent
+    AddLaboratorioComponent,
+    VerLaboratorioComponent
   ],
   imports: [
     BrowserModule,
