@@ -17,6 +17,7 @@ import { PaneldocentesComponent } from './components/paneldocentes/paneldocentes
 import { AddRequerimientoComponent } from './components/add-requerimiento/add-requerimiento.component';
 import { AddLaboratorioComponent } from './components/add-laboratorio/add-laboratorio.component';
 import { VerLaboratorioComponent } from './components/ver-laboratorio/ver-laboratorio.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { VerLaboratorioComponent } from './components/ver-laboratorio/ver-labora
     ModalContentComponent,
     AddRequerimientoComponent,
     AddLaboratorioComponent,
-    VerLaboratorioComponent
+    VerLaboratorioComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
