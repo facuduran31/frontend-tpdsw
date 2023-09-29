@@ -61,7 +61,6 @@ export class AddMaquinaVirtualComponent implements OnInit {
     if (routeSnapshot.url.length > 0 && routeSnapshot.url[1].path === 'editar') {
       this.isEdit = true;
     }
-
     if (this.isEdit) {
       const idMaquinaVirtual = Number(routeSnapshot.params['id']);
       this.loadMaquinaVirtual(idMaquinaVirtual);
