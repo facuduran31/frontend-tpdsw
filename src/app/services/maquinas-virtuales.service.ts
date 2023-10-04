@@ -40,6 +40,7 @@ export class MaquinasVirtualesService {
 
   getMaquinaVirtual(id: number): Observable<MaquinaVirtual | null> {
     this.obtenerHeader();
+    
     return this.http.get<MaquinaVirtual>(`${this.apiUrl}/${id}`, this.httpOptions);
   }
 
@@ -51,7 +52,6 @@ export class MaquinasVirtualesService {
 
   actualizarMaquinaVirtual(id: number, maquinaVirtual: MaquinaVirtual): Observable<any> {
     this.obtenerHeader();
-
     return this.http.put(`${this.apiUrl}/${id}`, maquinaVirtual, this.httpOptions);
   }
 
