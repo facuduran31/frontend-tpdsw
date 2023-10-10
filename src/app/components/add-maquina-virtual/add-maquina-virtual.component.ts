@@ -73,6 +73,8 @@ export class AddMaquinaVirtualComponent implements OnInit {
       maquinaVirtual => {
         if (maquinaVirtual != null) {
           this.maquinaVirtual = maquinaVirtual;
+          console.log(this.maquinaVirtual)
+          console.log(this.maquinaVirtual.sistemaOperativo)
         }
       },
       error => {
