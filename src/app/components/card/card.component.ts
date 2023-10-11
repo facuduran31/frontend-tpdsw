@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class CardComponent {
   @Input() titulo: string = '';
-  @Input() descripcion: string = '';
+  @Input() descripciones: string[] = [];
   @Input() imagen: string = '';
   @Input() textoBoton: string = '';
 }
