@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Laboratorio } from '../model/Laboratorio';
+import { Computadora } from '../model/Computadora'; 
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,11 @@ export class LaboratorioService {
   getLaboratorio(id: number): Observable<Laboratorio | null> {
     this.obtenerHeader();
     return this.http.get<Laboratorio>(`${this.apiUrl}/${id}`, this.httpOptions);
+  }
+
+  getComputadorasByLaboratorioId(id: number): Observable<Computadora[] | null> {
+    this.obtenerHeader();
+    return this.http.get<Computadora[]>(`${this.apiUrl}/${id}/computadoras`, this.httpOptions);
   }
 
   crearLaboratorio(Laboratorio: Laboratorio): Observable<{ id: number }> {

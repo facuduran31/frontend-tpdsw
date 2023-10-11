@@ -1,4 +1,4 @@
-export interface Laboratorio {
+export interface Computadora {
     idComputadora: number;
     procesador: string;
     descripcionRam: string;
