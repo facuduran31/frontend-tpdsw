@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Requerimiento } from '../../model/Requerimiento';
 import { RequerimientosService } from 'src/app/services/requerimientos.service';
 import { NgbModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { ModalContentComponent } from '../modal-content/modal-content.component';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-requerimiento',
   templateUrl: './add-requerimiento.component.html',
   styleUrls: ['./add-requerimiento.component.css']
 })
-export class AddRequerimientoComponent {
+export class AddRequerimientoComponent implements OnInit {
+
+  isEdit: boolean = false;
 
   requerimiento:Requerimiento = {
     idRequerimiento: null,
@@ -34,7 +36,31 @@ export class AddRequerimientoComponent {
     zapatilla: false
   };
 
-  constructor(private requerimientoService: RequerimientosService, private modalService:NgbModal, private router:Router) { }
+  constructor(private requerimientoService: RequerimientosService, private modalService:NgbModal, private router:Router, private route:ActivatedRoute) { }
+
+  ngOnInit(): void {
+    const routeSnapshot = this.route.snapshot;
+    if (routeSnapshot.url.length > 0 && routeSnapshot.url[1].path === 'editar') {
+      this.isEdit = true;
+    }
+
+    if (this.isEdit) {
+      const idRequerimiento = Number(routeSnapshot.params['id']);
+      this.loadRequerimiento(idRequerimiento);
+    }
+  }
+
+  loadRequerimiento(idRequerimiento: number) {
+    this.requerimientoService.getRequerimiento(idRequerimiento).subscribe(
+      response => 
+      {
+        if(response){
+          this.requerimiento = response
+        }
+      },
+      error => this.openErrorModal()
+    );
+  }
 
   openRequerimientoGuardadoModal(isEdit:boolean): void {
     const modalRef = this.modalService.open(ModalContentComponent);
@@ -71,8 +97,8 @@ export class AddRequerimientoComponent {
 
   submit()
   {
-    this.requerimientoService.guardarRequerimiento(this.requerimiento, false).subscribe(
-      response => this.openRequerimientoGuardadoModal(false),
+    this.requerimientoService.guardarRequerimiento(this.requerimiento, this.isEdit).subscribe(
+      response => this.openRequerimientoGuardadoModal(this.isEdit),
       error => this.openErrorModal()
     );
   }
