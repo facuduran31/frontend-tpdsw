@@ -24,6 +24,7 @@ export class LoginComponent {
       (response) => {
         this.token = response.token;
         localStorage.setItem('token', this.token);
+        localStorage.setItem('legajo', response.usuarioAutenticado.legajo);
         this.validarSesionActiva();
       },
       (error) => {

@@ -8,6 +8,7 @@ import { LaboratoriosComponent } from './components/laboratorios/laboratorios.co
 import { AddRequerimientoComponent } from './components/add-requerimiento/add-requerimiento.component';
 import { AddLaboratorioComponent } from './components/add-laboratorio/add-laboratorio.component';
 import { VerLaboratorioComponent } from './components/ver-laboratorio/ver-laboratorio.component';
+import { MisRequerimientosComponent } from './components/mis-requerimientos/mis-requerimientos.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'laboratorios', component: LaboratoriosComponent},
   {path: 'laboratorios/:id', component: VerLaboratorioComponent},
   {path: 'nuevorequerimiento', component: AddRequerimientoComponent},
+  {path: 'misrequerimientos', component: MisRequerimientosComponent},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 

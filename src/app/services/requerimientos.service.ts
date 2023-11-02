@@ -44,8 +44,15 @@ export class RequerimientosService {
     return this.http.get<Requerimiento>(`${this.apiUrl}/${id}`, this.httpOptions);
   }
 
+  getRequerimientoByIdDocente(id: number): Observable<Requerimiento[] | null> {
+    this.obtenerHeader();
+    return this.http.get<Requerimiento[]>(`${this.apiUrl}/docente/${id}`, this.httpOptions);
+  }
+
   crearRequerimiento(requerimiento: Requerimiento): Observable<{ id: number }> {
     this.obtenerHeader();
+    requerimiento.legajoDocente = localStorage.getItem('legajo');
+    requerimiento.estado = 'Pendiente';
     return this.http.post<{ id: number }>(this.apiUrl, requerimiento, this.httpOptions);
   }
 

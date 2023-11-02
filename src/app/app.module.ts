@@ -18,6 +18,7 @@ import { AddRequerimientoComponent } from './components/add-requerimiento/add-re
 import { AddLaboratorioComponent } from './components/add-laboratorio/add-laboratorio.component';
 import { VerLaboratorioComponent } from './components/ver-laboratorio/ver-laboratorio.component';
 import { CardComponent } from './components/card/card.component';
+import { MisRequerimientosComponent } from './components/mis-requerimientos/mis-requerimientos.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CardComponent } from './components/card/card.component';
     AddRequerimientoComponent,
     AddLaboratorioComponent,
     VerLaboratorioComponent,
-    CardComponent
+    CardComponent,
+    MisRequerimientosComponent
   ],
   imports: [
     BrowserModule,
