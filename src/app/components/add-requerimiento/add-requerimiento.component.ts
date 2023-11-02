@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Requerimiento } from '../../model/Requerimiento';
 import { RequerimientosService } from 'src/app/services/requerimientos.service';
+import { NgbModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { ModalContentComponent } from '../modal-content/modal-content.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-requerimiento',
@@ -31,13 +34,46 @@ export class AddRequerimientoComponent {
     zapatilla: false
   };
 
-  constructor(private requerimientoService: RequerimientosService) { }
+  constructor(private requerimientoService: RequerimientosService, private modalService:NgbModal, private router:Router) { }
+
+  openRequerimientoGuardadoModal(isEdit:boolean): void {
+    const modalRef = this.modalService.open(ModalContentComponent);
+    if(isEdit){
+      modalRef.componentInstance.name = 'Edición completa';
+      modalRef.componentInstance.message = 'Se ha editado con éxito la máquina virtual';
+    }else{
+      modalRef.componentInstance.name = 'Carga completa';
+      modalRef.componentInstance.message = 'Se ha creado con éxito la máquina virtual';
+    }
+    modalRef.componentInstance.type = 'alert';
+    modalRef.componentInstance.buttonText = 'Aceptar';
+    modalRef.componentInstance.buttonClass = 'btn-primary';
+    modalRef.result.then((result) => {
+      if (result === 'Aceptar') {
+        this.router.navigate(['']);
+      }
+    });
+  }
+
+  openErrorModal(): void {
+    const modalRef = this.modalService.open(ModalContentComponent);
+    modalRef.componentInstance.name = 'Se ha producido un error';
+    modalRef.componentInstance.message = 'No se ha podido procesar la solicitud.';
+    modalRef.componentInstance.type = 'alert';
+    modalRef.componentInstance.buttonText = 'Aceptar';
+    modalRef.componentInstance.buttonClass = 'btn-primary';
+    modalRef.result.then((result) => {
+      if (result === 'Aceptar') {
+        this.router.navigate(['']);
+      }
+    });
+  }
 
   submit()
   {
     this.requerimientoService.guardarRequerimiento(this.requerimiento, false).subscribe(
-      response => console.log(response),
-      error => console.log(error)
+      response => this.openRequerimientoGuardadoModal(false),
+      error => this.openErrorModal()
     );
   }
 }

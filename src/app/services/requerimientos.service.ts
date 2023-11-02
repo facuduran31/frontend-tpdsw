@@ -51,13 +51,11 @@ export class RequerimientosService {
 
   actualizarRequerimiento(id: number, requerimiento: Requerimiento): Observable<any> {
     this.obtenerHeader();
-
     return this.http.put(`${this.apiUrl}/${id}`, requerimiento, this.httpOptions);
   }
 
   eliminarRequerimiento(id: number): Observable<any> {
     this.obtenerHeader();
-
     return this.http.delete(`${this.apiUrl}/${id}`, this.httpOptions);
   }
 }
