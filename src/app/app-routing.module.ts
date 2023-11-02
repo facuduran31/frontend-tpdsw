@@ -23,6 +23,7 @@ const routes: Routes = [
   {path: 'laboratorios/:id', component: VerLaboratorioComponent},
   {path: 'nuevorequerimiento', component: AddRequerimientoComponent},
   {path: 'misrequerimientos', component: MisRequerimientosComponent},
+  {path: 'misrequerimientos/editar/:id', component: AddRequerimientoComponent},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
