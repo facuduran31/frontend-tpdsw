@@ -19,9 +19,6 @@ import { AddLaboratorioComponent } from './components/add-laboratorio/add-labora
 import { VerLaboratorioComponent } from './components/ver-laboratorio/ver-laboratorio.component';
 import { CardComponent } from './components/card/card.component';
 import { MisRequerimientosComponent } from './components/mis-requerimientos/mis-requerimientos.component';
-import { AgendaComponent } from './components/agenda/agenda.component';
-import { FullCalendarModule } from '@fullcalendar/angular';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,15 +35,13 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     AddLaboratorioComponent,
     VerLaboratorioComponent,
     CardComponent,
-    MisRequerimientosComponent,
-    AgendaComponent
+    MisRequerimientosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    FullCalendarModule,
     NgbModule
   ],
   providers: [MaquinasVirtualesService],
