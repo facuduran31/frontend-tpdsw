@@ -7,10 +7,12 @@
   <div class="mt-5 d-flex justify-content-center align-items-center h-100">
    <div class="d-flex flex-wrap">
       <app-card *ngFor="let computadora of computadoras" 
-        [titulo]="computadora.idComputadora.toString()"
+        [titulo]="'ID: '+ computadora.idComputadora.toString()"
         [imagen]="computadora.imagen" 
-        [textoBoton]="'Ver computadora'" 
-        [descripciones]="['Almacenamiento: ' + computadora.descripcionAlmacenamiento, 'RAM: ' + computadora.descripcionRam]">
+        [descripciones]="[
+          'Almacenamiento: ' + computadora.descripcionAlmacenamiento,
+          'RAM: ' + computadora.descripcionRam,
+          'Procesador: ' + computadora.procesador]">
         [isEditable]="true"
       </app-card>
     </div>

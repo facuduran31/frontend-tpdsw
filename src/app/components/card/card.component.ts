@@ -10,7 +10,6 @@ export class CardComponent {
   @Input() titulo: string = '';
   @Input() descripciones: string[] = [];
   @Input() imagen: string = '';
-  @Input() textoBoton: string = '';
   @Input() isEditable: boolean = true;
 
   constructor() { }
