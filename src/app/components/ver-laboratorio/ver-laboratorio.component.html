@@ -1,12 +1,17 @@
 <app-navbar></app-navbar>
 
 <div class="container">
+  <div class="d-flex flex-row-reverse mb-5 mt-5">
+    <button type="button" class="btn btn-primary rounded shadow-lg" routerLink="add">+ Agregar Computadora</button>
+  </div>
   <div class="mt-5 d-flex justify-content-center align-items-center h-100">
    <div class="d-flex flex-wrap">
       <app-card *ngFor="let computadora of computadoras" 
-        [titulo]="computadora.idComputadora.toString()" 
+        [titulo]="computadora.idComputadora.toString()"
+        [imagen]="computadora.imagen" 
         [textoBoton]="'Ver computadora'" 
         [descripciones]="['Almacenamiento: ' + computadora.descripcionAlmacenamiento, 'RAM: ' + computadora.descripcionRam]">
+        [isEditable]="true"
       </app-card>
     </div>
   </div>

@@ -12,7 +12,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class MaquinasVirtualesComponent implements OnInit {
   maquinasVirtuales: MaquinaVirtual[] = [];
-
+  
   constructor(private maquinasService: MaquinasVirtualesService, private router:Router, private modalService:NgbModal) { }
 
   ngOnInit(): void {
