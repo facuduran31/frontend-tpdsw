@@ -19,6 +19,7 @@ import { AddLaboratorioComponent } from './components/add-laboratorio/add-labora
 import { VerLaboratorioComponent } from './components/ver-laboratorio/ver-laboratorio.component';
 import { CardComponent } from './components/card/card.component';
 import { MisRequerimientosComponent } from './components/mis-requerimientos/mis-requerimientos.component';
+import { AddComputadoraComponent } from './components/add-computadora/add-computadora.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { MisRequerimientosComponent } from './components/mis-requerimientos/mis-
     AddLaboratorioComponent,
     VerLaboratorioComponent,
     CardComponent,
-    MisRequerimientosComponent
+    MisRequerimientosComponent,
+    AddComputadoraComponent
   ],
   imports: [
     BrowserModule,

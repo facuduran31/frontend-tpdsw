@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <div class="d-flex flex-row-reverse">
+      <button type="button" class="close btn fs-4 text-align-right" routerLink="../" aria-label="Close" id="btnClose">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>   
+    <form>
+      <fieldset>
+        <legend>{{isEdit ? 'Editar' : 'Cargar'}} una computadora</legend>
+        <div class="form-group">
+          <label for="procesador" class="form-label mt-4">Procesador:</label>
+          <input type="text" class="form-control" id="procesador" name="procesador" placeholder="Intel i5 11th" [(ngModel)]="computadora.procesador">
+          <label for="RAM" class="form-label mt-4">Descripcion RAM:</label>
+          <input type="text" class="form-control" id="RAM" name="RAM" placeholder="8gb RAM" [(ngModel)]="computadora.descripcionRam">
+          <label for="Almacenamiento" class="form-label mt-4">Descripcion Almacenamiento:</label>
+          <input type="text" class="form-control" id="Almacenamiento" name="Almacenamiento" placeholder="256GB SSD" [(ngModel)]="computadora.descripcionAlmacenamiento">
+          <label for="imagen" class="form-label mt-4">Imagen:</label>
+          <input type="text" class="form-control" id="imagen" name="imagen" placeholder="link" [(ngModel)]="computadora.imagen">
+        </div>
+        <button type="button" class="btn btn-primary mt-4" (click)="onSubmit()">Enviar</button>
+      </fieldset>
+    </form>
+  </div>
