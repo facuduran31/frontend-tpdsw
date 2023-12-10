@@ -9,6 +9,7 @@ import { AddRequerimientoComponent } from './components/add-requerimiento/add-re
 import { AddLaboratorioComponent } from './components/add-laboratorio/add-laboratorio.component';
 import { VerLaboratorioComponent } from './components/ver-laboratorio/ver-laboratorio.component';
 import { MisRequerimientosComponent } from './components/mis-requerimientos/mis-requerimientos.component';
+import { AddComputadoraComponent } from './components/add-computadora/add-computadora.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -21,6 +22,8 @@ const routes: Routes = [
   {path: 'laboratorios/editar/:id', component: AddLaboratorioComponent},
   {path: 'laboratorios', component: LaboratoriosComponent},
   {path: 'laboratorios/:id', component: VerLaboratorioComponent},
+  {path: 'laboratorios/:id/add', component: AddComputadoraComponent},
+  {path: 'laboratorios/:id/editar/:idComputadora', component: AddComputadoraComponent},
   {path: 'nuevorequerimiento', component: AddRequerimientoComponent},
   {path: 'misrequerimientos', component: MisRequerimientosComponent},
   {path: 'misrequerimientos/editar/:id', component: AddRequerimientoComponent},

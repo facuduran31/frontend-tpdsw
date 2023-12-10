@@ -6,9 +6,10 @@
   </div>
   <div class="mt-5 d-flex justify-content-center align-items-center h-100">
    <div class="d-flex flex-wrap">
-      <app-card *ngFor="let computadora of computadoras" 
+      <app-card *ngFor="let computadora of computadoras"
         [titulo]="'ID: '+ computadora.idComputadora.toString()"
-        [imagen]="computadora.imagen" 
+        [imagen]="computadora.imagen"
+        [id]="computadora.idComputadora"  
         [descripciones]="[
           'Almacenamiento: ' + computadora.descripcionAlmacenamiento,
           'RAM: ' + computadora.descripcionRam,

@@ -59,13 +59,17 @@ export class AddComputadoraComponent implements OnInit {
   }
   
   ngOnInit(): void {
+
+    this.computadora.laboratorio_idLaboratorio = Number(this.route.snapshot.params['id']);
+    
     const routeSnapshot = this.route.snapshot;
-    if (routeSnapshot.url.length > 0 && routeSnapshot.url[1].path === 'editar') {
+    console.log(routeSnapshot.url)
+    if (routeSnapshot.url.length > 0 && routeSnapshot.url[2].path === 'editar') {
       this.isEdit = true;
     }
 
     if (this.isEdit) {
-      const idComputadora = Number(routeSnapshot.params['id']);
+      const idComputadora = Number(routeSnapshot.url[3].path);
       this.loadComputadora(idComputadora);
     }
   }

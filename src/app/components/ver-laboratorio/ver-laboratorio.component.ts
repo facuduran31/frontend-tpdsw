@@ -19,7 +19,6 @@ export class VerLaboratorioComponent implements OnInit {
       if(computadoras != null)
       {
         this.computadoras = computadoras;
-        console.log(this.computadoras)
       }
     }, error => {
       console.log(error);
