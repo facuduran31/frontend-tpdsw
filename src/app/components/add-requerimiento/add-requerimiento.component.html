@@ -1,8 +1,8 @@
 <div class="container mt-5">
   <div class="d-flex flex-row-reverse">
-    <button type="button" class="close btn fs-4 text-align-right" routerLink="../" aria-label="Close" id="btnClose">
-       <span aria-hidden="true">&times;</span>
-     </button>
+    <button type="button" class="btn btn-primary fs-2 text-align-right" [routerLink]="(isEdit)?'../../':'../'" aria-label="Close" id="btnClose">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
    </div>   
    <form>
    <fieldset>

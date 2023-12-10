@@ -1,10 +1,15 @@
 <app-navbar></app-navbar>
 
 <div class="container">
-  <div class="d-flex flex-row-reverse mb-5 mt-5">
+  
+  <div class="d-flex justify-content-between mt-5">
+    <button type="button" class="btn btn-primary fs-2 text-align-right rounded" [routerLink]="'../'" aria-label="Close" id="btnClose">
+        <i class="fa-solid fa-arrow-left"></i>
+    </button>  
     <button type="button" class="btn btn-primary rounded shadow-lg" routerLink="add">+ Agregar Computadora</button>
   </div>
-  <div class="mt-5 d-flex justify-content-center align-items-center h-100">
+
+    <div class="mt-5 d-flex justify-content-center align-items-center h-100">
    <div class="d-flex flex-wrap">
       <app-card *ngFor="let computadora of computadoras"
         [titulo]="'ID: '+ computadora.idComputadora.toString()"
