@@ -76,7 +76,7 @@
    line-height: 1.5;
    color: #55595c;
    text-align: left;
-   background-color: #fff;
+   background-image: url('https://images4.alphacoders.com/132/1329894.png');
  }
  
  [tabindex="-1"]:focus:not(:focus-visible) {
