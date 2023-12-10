@@ -11,6 +11,7 @@ import { VerLaboratorioComponent } from './components/ver-laboratorio/ver-labora
 import { MisRequerimientosComponent } from './components/mis-requerimientos/mis-requerimientos.component';
 import { AddComputadoraComponent } from './components/add-computadora/add-computadora.component';
 import { VerRequerimientosComponent } from './components/ver-requerimientos/ver-requerimientos.component';
+import { VerRequerimientoComponent } from './components/ver-requerimiento/ver-requerimiento.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'nuevorequerimiento', component: AddRequerimientoComponent},
   {path: 'misrequerimientos', component: MisRequerimientosComponent},
   {path: 'misrequerimientos/editar/:id', component: AddRequerimientoComponent},
+  {path: 'requerimientos/:id', component: VerRequerimientoComponent},
   {path: 'requerimientos', component: VerRequerimientosComponent},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];

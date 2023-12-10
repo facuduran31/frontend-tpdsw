@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Requerimiento } from 'src/app/model/Requerimiento';
 import { RequerimientosService } from 'src/app/services/requerimientos.service';
-import { ModalContentComponent } from '../modal-content/modal-content.component';
 import { DocentesService } from 'src/app/services/docentes.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalContentComponent } from '../modal-content/modal-content.component';
 
 @Component({
   selector: 'app-ver-requerimientos',
@@ -14,7 +14,7 @@ export class VerRequerimientosComponent implements OnInit {
 
   requerimientos:Requerimiento[] = [];
 
-  constructor(private requerimientosService:RequerimientosService, private docentesService:DocentesService) { }
+  constructor(private requerimientosService:RequerimientosService, private docentesService:DocentesService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
 

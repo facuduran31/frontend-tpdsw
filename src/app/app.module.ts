@@ -21,6 +21,7 @@ import { CardComponent } from './components/card/card.component';
 import { MisRequerimientosComponent } from './components/mis-requerimientos/mis-requerimientos.component';
 import { AddComputadoraComponent } from './components/add-computadora/add-computadora.component';
 import { VerRequerimientosComponent } from './components/ver-requerimientos/ver-requerimientos.component';
+import { VerRequerimientoComponent } from './components/ver-requerimiento/ver-requerimiento.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { VerRequerimientosComponent } from './components/ver-requerimientos/ver-
     CardComponent,
     MisRequerimientosComponent,
     AddComputadoraComponent,
-    VerRequerimientosComponent
+    VerRequerimientosComponent,
+    VerRequerimientoComponent
   ],
   imports: [
     BrowserModule,

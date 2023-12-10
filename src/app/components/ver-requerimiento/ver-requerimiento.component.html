@@ -1,0 +1,27 @@
+<div class="container mt-5">
+    <div class="d-flex flex-row-reverse">
+      <button type="button" routerLink="../" class="btn btn-primary fs-2 text-align-right" aria-label="Close" id="btnClose">
+        <i class="fa-solid fa-arrow-left"></i>
+      </button>
+     </div>   
+     <h1>Detalles del Requerimiento</h1>
+     <ul class="list-group">
+        <li class="list-group-item">ID: {{requerimiento?.idRequerimiento}}</li>
+        <li class="list-group-item">Tipo de Requerimiento: {{requerimiento?.tipoRequerimiento}}</li>
+        <li class="list-group-item">Estado: {{requerimiento?.estado}}</li>
+        <li class="list-group-item">Docente: </li>
+        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">HDMI: {{requerimiento?.hdmi?'Sí':'No'}}</li>
+        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">VGA: {{requerimiento?.vga?'Sí':'No'}}</li>
+        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Mouse: {{requerimiento?.mouse?'Sí':'No'}}</li>
+        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Zapatilla: {{requerimiento?.mouse?'Sí':'No'}}</li>
+        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Proyector: {{requerimiento?.proyector?'Sí':'No'}}</li>
+        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Fecha de Inicio: {{requerimiento?.fechaInicio}}</li>
+        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Fecha de Fin: {{requerimiento?.fechaFin}}</li>
+        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Hora de inicio: {{requerimiento?.horaInicio}}</li>
+        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Hora de fin: {{requerimiento?.horaFin}}</li>
+        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Materia: {{requerimiento?.materia}}</li>
+        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Tipo de reserva: {{requerimiento?.tipoReserva}}</li>
+        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Descripción: {{requerimiento?.descripcion}}</li>
+      </ul>
+  </div>
+    
