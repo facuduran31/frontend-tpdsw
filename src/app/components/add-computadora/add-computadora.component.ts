@@ -63,7 +63,6 @@ export class AddComputadoraComponent implements OnInit {
     this.computadora.laboratorio_idLaboratorio = Number(this.route.snapshot.params['id']);
     
     const routeSnapshot = this.route.snapshot;
-    console.log(routeSnapshot.url)
     if (routeSnapshot.url.length > 0 && routeSnapshot.url[2].path === 'editar') {
       this.isEdit = true;
     }
@@ -95,6 +94,7 @@ export class AddComputadoraComponent implements OnInit {
         },
         error => {
           this.openErrorModal();
+          console.log(error, this.computadora)
         }
       );
     }
