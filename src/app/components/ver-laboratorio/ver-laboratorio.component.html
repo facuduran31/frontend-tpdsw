@@ -9,9 +9,10 @@
     <button type="button" class="btn btn-primary rounded shadow-lg" routerLink="add">+ Agregar Computadora</button>
   </div>
 
-    <div class="mt-5 d-flex justify-content-center align-items-center h-100">
-   <div class="d-flex flex-wrap">
+  <div class="mt-5 d-flex justify-content-center align-items-center h-100">
+   <div class="d-flex flex-wrap justify-content-center">
       <app-card *ngFor="let computadora of computadoras"
+        class="m-3"
         [titulo]="'ID: '+ computadora.idComputadora.toString()"
         [imagen]="computadora.imagen"
         [id]="computadora.idComputadora"  
