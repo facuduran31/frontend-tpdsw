@@ -39,6 +39,11 @@ export class RequerimientosService {
     return this.http.get<Requerimiento[]>(this.apiUrl, this.httpOptions);
   }
 
+  getRequerimientos(): Observable<Requerimiento[] | null> {
+    this.obtenerHeader();
+    return this.http.get<Requerimiento[]>(this.apiUrl, this.httpOptions);
+  }
+
   getRequerimiento(id: number): Observable<Requerimiento | null> {
     this.obtenerHeader();
     return this.http.get<Requerimiento>(`${this.apiUrl}/${id}`, this.httpOptions);

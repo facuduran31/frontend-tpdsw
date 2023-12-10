@@ -51,7 +51,6 @@ export class LaboratoriosComponent implements OnInit{
   borrarLaboratorio(laboratorio:Laboratorio): void {
     this.laboratoriosService.eliminarLaboratorio(laboratorio.idLaboratorio).subscribe(
       (maquinaVirtual) => {
-        console.log(maquinaVirtual)
         this.obtenerLaboratorios();
       },
       (error) => {

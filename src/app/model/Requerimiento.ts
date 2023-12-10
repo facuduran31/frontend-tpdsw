@@ -20,4 +20,5 @@ export interface Requerimiento {
     fechaFin: Date | null;
     horaInicio: Time | null;
     horaFin: Time | null;
+    docente: string;
 }

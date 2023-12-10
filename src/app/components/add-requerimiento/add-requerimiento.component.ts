@@ -33,7 +33,8 @@ export class AddRequerimientoComponent implements OnInit {
     horaInicio: null,
     horaFin: null,
     proyector: false,
-    zapatilla: false
+    zapatilla: false,
+    docente: ''
   };
 
   constructor(private requerimientoService: RequerimientosService, private modalService:NgbModal, private router:Router, private route:ActivatedRoute) { }
