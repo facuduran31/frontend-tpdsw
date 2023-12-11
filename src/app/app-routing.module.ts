@@ -12,9 +12,11 @@ import { MisRequerimientosComponent } from './components/mis-requerimientos/mis-
 import { AddComputadoraComponent } from './components/add-computadora/add-computadora.component';
 import { VerRequerimientosComponent } from './components/ver-requerimientos/ver-requerimientos.component';
 import { VerRequerimientoComponent } from './components/ver-requerimiento/ver-requerimiento.component';
+import { CalendarioComponent } from './components/calendario/calendario.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
+  {path: 'calendario', component: CalendarioComponent},
   {path: 'login', component: LoginComponent},
   {path: 'panel', component: PaneldocentesComponent},
   {path: 'maquinasvirtuales/add', component: AddMaquinaVirtualComponent},
