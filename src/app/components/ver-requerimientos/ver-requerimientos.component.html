@@ -8,6 +8,7 @@
             <th scope="col">ID</th>
             <th scope="col">Estado</th>
             <th scope="col">Docente</th>
+            <th scope="col">Tipo de requerimiento</th>
             <th scope="col">Acciones</th>
           </tr>
         </thead>
@@ -16,6 +17,7 @@
             <td scope="row">{{item.idRequerimiento}}</td>
             <td>{{item.estado}}</td>
             <td>{{item.docente}}</td>
+            <td>{{item.tipoRequerimiento}}</td>
             <td>
               <!-- Botón para Ver -->
               <button [routerLink]="['./', item.idRequerimiento]" class="btn btn-primary rounded shadow me-2 mb-2">

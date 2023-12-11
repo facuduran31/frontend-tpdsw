@@ -1,27 +1,52 @@
 <div class="container mt-5">
     <div class="d-flex flex-row-reverse">
-      <button type="button" routerLink="../" class="btn btn-primary fs-2 text-align-right" aria-label="Close" id="btnClose">
+      <button type="button" routerLink="../" class="btn btn-primary rounded fs-2 text-align-right" aria-label="Close" id="btnClose">
         <i class="fa-solid fa-arrow-left"></i>
       </button>
      </div>   
-     <h1>Detalles del Requerimiento</h1>
-     <ul class="list-group">
-        <li class="list-group-item">ID: {{requerimiento?.idRequerimiento}}</li>
-        <li class="list-group-item">Tipo de Requerimiento: {{requerimiento?.tipoRequerimiento}}</li>
-        <li class="list-group-item">Estado: {{requerimiento?.estado}}</li>
-        <li class="list-group-item">Docente: </li>
-        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">HDMI: {{requerimiento?.hdmi?'Sí':'No'}}</li>
-        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">VGA: {{requerimiento?.vga?'Sí':'No'}}</li>
-        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Mouse: {{requerimiento?.mouse?'Sí':'No'}}</li>
-        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Zapatilla: {{requerimiento?.mouse?'Sí':'No'}}</li>
-        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Proyector: {{requerimiento?.proyector?'Sí':'No'}}</li>
-        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Fecha de Inicio: {{requerimiento?.fechaInicio}}</li>
-        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Fecha de Fin: {{requerimiento?.fechaFin}}</li>
-        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Hora de inicio: {{requerimiento?.horaInicio}}</li>
-        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Hora de fin: {{requerimiento?.horaFin}}</li>
-        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Materia: {{requerimiento?.materia}}</li>
-        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Tipo de reserva: {{requerimiento?.tipoReserva}}</li>
-        <li class="list-group-item" *ngIf="requerimiento?.tipoRequerimiento == 'Reserva de laboratorio'">Descripción: {{requerimiento?.descripcion}}</li>
-      </ul>
+     <div class="row m-2">
+       <div class="col-6 me-3">
+         <h1>Detalles del Requerimiento</h1>
+         <ul class="list-group">
+           <li class="list-group-item">ID: {{requerimiento.idRequerimiento}}</li>
+           <li class="list-group-item">Tipo de Requerimiento: {{requerimiento.tipoRequerimiento}}</li>
+           <li class="list-group-item">Estado: {{requerimiento.estado}}</li>
+           <li class="list-group-item">Docente: </li>
+           <li class="list-group-item" *ngIf="requerimiento.tipoRequerimiento == 'Reserva de laboratorio'">HDMI: {{requerimiento.hdmi?'Sí':'No'}}</li>
+           <li class="list-group-item" *ngIf="requerimiento.tipoRequerimiento == 'Reserva de laboratorio'">VGA: {{requerimiento.vga?'Sí':'No'}}</li>
+           <li class="list-group-item" *ngIf="requerimiento.tipoRequerimiento == 'Reserva de laboratorio'">Mouse: {{requerimiento.mouse?'Sí':'No'}}</li>
+           <li class="list-group-item" *ngIf="requerimiento.tipoRequerimiento == 'Reserva de laboratorio'">Zapatilla: {{requerimiento.mouse?'Sí':'No'}}</li>
+           <li class="list-group-item" *ngIf="requerimiento.tipoRequerimiento == 'Reserva de laboratorio'">Proyector: {{requerimiento.proyector?'Sí':'No'}}</li>
+           <li class="list-group-item" *ngIf="requerimiento.tipoRequerimiento == 'Reserva de laboratorio'">Fecha de Inicio: {{requerimiento.fechaInicio}}</li>
+           <li class="list-group-item" *ngIf="requerimiento.tipoRequerimiento == 'Reserva de laboratorio'">Fecha de Fin: {{requerimiento.fechaFin}}</li>
+           <li class="list-group-item" *ngIf="requerimiento.tipoRequerimiento == 'Reserva de laboratorio'">Hora de inicio: {{requerimiento.horaInicio}}</li>
+           <li class="list-group-item" *ngIf="requerimiento.tipoRequerimiento == 'Reserva de laboratorio'">Hora de fin: {{requerimiento.horaFin}}</li>
+           <li class="list-group-item" *ngIf="requerimiento.tipoRequerimiento == 'Reserva de laboratorio'">Materia: {{requerimiento.materia}}</li>
+           <li class="list-group-item" *ngIf="requerimiento.tipoRequerimiento == 'Reserva de laboratorio'">Tipo de reserva: {{requerimiento.tipoReserva}}</li>
+           <li class="list-group-item" *ngIf="requerimiento.tipoRequerimiento == 'Reserva de laboratorio'">Descripción: {{requerimiento.descripcion}}</li>
+         </ul>
+      </div>
+      <div class="col-4">
+        <h3>Acciones</h3>
+        <div class="form-group">
+          <label for="selectEstado" class="form-label mt-2">Estado del requerimiento:</label>
+          <select class="form-select" id="selectEstado" [(ngModel)]='requerimiento.estado' name="selectEstado">
+            <option>Pendiente</option>
+            <option>Atendido</option>
+            <option>Finalizado</option>
+          </select>
+        </div>
+        <div class="form-group" *ngIf="requerimiento.tipoRequerimiento=='Reserva de laboratorio'">
+          <label for="selectEstado" class="form-label mt-2">Asignar un laboratorio:</label>
+          <select class="form-select" id="selectEstado" [(ngModel)]='requerimiento.idLaboratorio' name="selectEstado">
+            <option *ngFor="let lab of laboratorios" [value]="lab.idLaboratorio">{{lab.nombreLaboratorio}}</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="comentario" class="form-label mt-4">Comentario del encargado:</label>
+          <textarea class="form-control" id="comentario" name="comentario" rows="3" placeholder="Escriba un mensaje..." [(ngModel)]="requerimiento.comentarioEncargado"></textarea>
+        </div>
+      </div>
+     </div>
   </div>
     
