@@ -50,7 +50,6 @@ export class MaquinasVirtualesComponent implements OnInit {
   borrarMaquinaVirtual(maquinaVirtual:MaquinaVirtual): void {
     this.maquinasService.eliminarMaquinaVirtual(maquinaVirtual.idMaquinaVirtual).subscribe(
       (maquinaVirtual) => {
-        console.log(maquinaVirtual)
         this.obtenerMaquinasVirtuales();
       },
       (error) => {

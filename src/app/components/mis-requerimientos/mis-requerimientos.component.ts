@@ -40,7 +40,14 @@ export class MisRequerimientosComponent implements OnInit {
     modalRef.result.then((result) => {
       if (result === 'Eliminar') {
         if(requerimiento.idRequerimiento){
-          this.requerimientosService.eliminarRequerimiento(requerimiento.idRequerimiento);
+          this.requerimientosService.eliminarRequerimiento(requerimiento.idRequerimiento).subscribe(
+            (res) => {
+              this.ngOnInit();
+            },
+            (err)=>{
+              console.log(err);
+            }
+          );
         }
       }
     });
