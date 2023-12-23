@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Requerimiento } from 'src/app/model/Requerimiento';
 import { RequerimientosService } from 'src/app/services/requerimientos.service';
 import { ModalContentComponent } from '../modal-content/modal-content.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-mis-requerimientos',
@@ -11,9 +12,10 @@ import { ModalContentComponent } from '../modal-content/modal-content.component'
 })
 export class MisRequerimientosComponent implements OnInit {
 
+  isRequerimientosCerrados:boolean = false;
   requerimientos:Requerimiento[] = [];
 
-  constructor(private requerimientosService:RequerimientosService, private modalService:NgbModal) { }
+  constructor(private requerimientosService:RequerimientosService, private modalService:NgbModal, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
 
@@ -24,6 +26,9 @@ export class MisRequerimientosComponent implements OnInit {
         (requerimientos) => {
           if(requerimientos){
             this.requerimientos = requerimientos;
+            if(this.isRequerimientosCerrados){
+              this.requerimientos = this.requerimientos.filter((requerimiento) => requerimiento.estado === 'Finalizado');
+            }
           }
         }
       );

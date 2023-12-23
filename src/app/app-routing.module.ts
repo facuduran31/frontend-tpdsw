@@ -29,6 +29,7 @@ const routes: Routes = [
   {path: 'nuevorequerimiento', component: AddRequerimientoComponent},
   {path: 'misrequerimientos', component: MisRequerimientosComponent},
   {path: 'misrequerimientos/editar/:id', component: AddRequerimientoComponent},
+  {path: 'misrequerimientos/cerrados', component: MisRequerimientosComponent},
   {path: 'requerimientos/:id', component: VerRequerimientoComponent},
   {path: 'requerimientos', component: VerRequerimientosComponent},
   {path: '**', redirectTo: '', pathMatch: 'full'}
