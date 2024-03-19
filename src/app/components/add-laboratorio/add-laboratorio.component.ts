@@ -36,6 +36,7 @@ export class AddLaboratorioComponent implements OnInit {
     modalRef.result.then((result) => {
       if (result === 'Aceptar') {
         this.router.navigate(['']);
+        this.laboratorio.nombreLaboratorio = '';
       }
     });
   }

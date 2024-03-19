@@ -19,7 +19,6 @@ export class NavbarComponent implements OnInit {
     if(legajo){ 
       this.docentesService.getDocenteByLegajo(legajo).subscribe(
         res => {
-          console.log(res)
           if(res){
             if(res.tipoUsuario == 'Encargado'){
               this.isEncargado = true;
