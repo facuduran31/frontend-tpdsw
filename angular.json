@@ -26,6 +26,7 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/ej2-angular-calendars/styles/material.css",
               "src/styles.css"
             ],
             

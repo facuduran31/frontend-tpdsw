@@ -19,6 +19,8 @@
   background-attachment: fixed; /* Fijar la imagen de fondo 
 } */
 
+@import '../node_modules/@syncfusion/ej2-material-theme/styles/material.css';
+
  @import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&display=swap");
  :root {
    --blue: #007bff;

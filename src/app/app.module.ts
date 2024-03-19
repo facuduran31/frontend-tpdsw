@@ -22,6 +22,8 @@ import { MisRequerimientosComponent } from './components/mis-requerimientos/mis-
 import { AddComputadoraComponent } from './components/add-computadora/add-computadora.component';
 import { VerRequerimientosComponent } from './components/ver-requerimientos/ver-requerimientos.component';
 import { VerRequerimientoComponent } from './components/ver-requerimiento/ver-requerimiento.component';
+import { CalendarioComponent } from './components/calendario/calendario.component';
+import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,16 +43,19 @@ import { VerRequerimientoComponent } from './components/ver-requerimiento/ver-re
     MisRequerimientosComponent,
     AddComputadoraComponent,
     VerRequerimientosComponent,
-    VerRequerimientoComponent
+    VerRequerimientoComponent,
+    CalendarioComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ScheduleModule,
+    RecurrenceEditorModule,
     NgbModule
   ],
-  providers: [MaquinasVirtualesService],
+  providers: [MaquinasVirtualesService, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
