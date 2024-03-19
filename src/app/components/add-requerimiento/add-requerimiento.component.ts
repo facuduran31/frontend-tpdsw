@@ -67,10 +67,10 @@ export class AddRequerimientoComponent implements OnInit {
     const modalRef = this.modalService.open(ModalContentComponent);
     if(isEdit){
       modalRef.componentInstance.name = 'Edición completa';
-      modalRef.componentInstance.message = 'Se ha editado con éxito la máquina virtual';
+      modalRef.componentInstance.message = 'Se ha editado con éxito el requerimiento';
     }else{
       modalRef.componentInstance.name = 'Carga completa';
-      modalRef.componentInstance.message = 'Se ha creado con éxito la máquina virtual';
+      modalRef.componentInstance.message = 'Se ha creado con éxito el requerimiento';
     }
     modalRef.componentInstance.type = 'alert';
     modalRef.componentInstance.buttonText = 'Aceptar';
