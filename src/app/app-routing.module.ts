@@ -12,28 +12,27 @@ import { MisRequerimientosComponent } from './components/mis-requerimientos/mis-
 import { AddComputadoraComponent } from './components/add-computadora/add-computadora.component';
 import { VerRequerimientosComponent } from './components/ver-requerimientos/ver-requerimientos.component';
 import { VerRequerimientoComponent } from './components/ver-requerimiento/ver-requerimiento.component';
-import { CalendarioComponent } from './components/calendario/calendario.component';
+import { verifyTokenDocente, verifyTokenEncargado } from './guards/login.guard';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
-  {path: 'calendario', component: CalendarioComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'panel', component: PaneldocentesComponent},
-  {path: 'maquinasvirtuales/add', component: AddMaquinaVirtualComponent},
-  {path: 'maquinasvirtuales/editar/:id', component: AddMaquinaVirtualComponent},
-  {path: 'maquinasvirtuales', component: MaquinasVirtualesComponent},
-  {path: 'laboratorios/add', component: AddLaboratorioComponent},
-  {path: 'laboratorios/editar/:id', component: AddLaboratorioComponent},
-  {path: 'laboratorios', component: LaboratoriosComponent},
-  {path: 'laboratorios/:id', component: VerLaboratorioComponent},
-  {path: 'laboratorios/:id/add', component: AddComputadoraComponent},
-  {path: 'laboratorios/:id/editar/:idComputadora', component: AddComputadoraComponent},
-  {path: 'nuevorequerimiento', component: AddRequerimientoComponent},
-  {path: 'misrequerimientos', component: MisRequerimientosComponent},
-  {path: 'misrequerimientos/editar/:id', component: AddRequerimientoComponent},
-  {path: 'misrequerimientos/cerrados', component: MisRequerimientosComponent},
-  {path: 'requerimientos/:id', component: VerRequerimientoComponent},
-  {path: 'requerimientos', component: VerRequerimientosComponent},
+  {path: 'panel', component: PaneldocentesComponent, canActivate: [verifyTokenDocente]},
+  {path: 'maquinasvirtuales/add', component: AddMaquinaVirtualComponent, canActivate: [verifyTokenEncargado]},
+  {path: 'maquinasvirtuales/editar/:id', component: AddMaquinaVirtualComponent, canActivate: [verifyTokenEncargado]},
+  {path: 'maquinasvirtuales', component: MaquinasVirtualesComponent, canActivate: [verifyTokenEncargado]},
+  {path: 'laboratorios/add', component: AddLaboratorioComponent, canActivate: [verifyTokenEncargado]},
+  {path: 'laboratorios/editar/:id', component: AddLaboratorioComponent, canActivate: [verifyTokenEncargado]},
+  {path: 'laboratorios', component: LaboratoriosComponent, canActivate: [verifyTokenEncargado]},
+  {path: 'laboratorios/:id', component: VerLaboratorioComponent, canActivate: [verifyTokenEncargado]},
+  {path: 'laboratorios/:id/add', component: AddComputadoraComponent, canActivate: [verifyTokenEncargado]},
+  {path: 'laboratorios/:id/editar/:idComputadora', component: AddComputadoraComponent, canActivate: [verifyTokenEncargado]},
+  {path: 'nuevorequerimiento', component: AddRequerimientoComponent, canActivate: [verifyTokenDocente]},
+  {path: 'misrequerimientos', component: MisRequerimientosComponent, canActivate: [verifyTokenDocente]},
+  {path: 'misrequerimientos/editar/:id', component: AddRequerimientoComponent, canActivate: [verifyTokenDocente]},
+  {path: 'misrequerimientos/cerrados', component: MisRequerimientosComponent, canActivate: [verifyTokenDocente]},
+  {path: 'requerimientos/:id', component: VerRequerimientoComponent, canActivate: [verifyTokenEncargado]},
+  {path: 'requerimientos', component: VerRequerimientosComponent, canActivate: [verifyTokenEncargado]},
   {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
