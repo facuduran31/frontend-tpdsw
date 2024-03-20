@@ -42,8 +42,8 @@ export const verifyTokenDocente = () => {
             }
             else
             {
-                alert("No tiene permisos para acceder a esta sección");
                 router.navigate(['/']);
+                alert("No tiene permisos para acceder a esta sección");
                 return false;
             }
         },
