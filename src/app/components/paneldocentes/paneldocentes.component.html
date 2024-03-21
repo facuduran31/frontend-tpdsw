@@ -7,10 +7,10 @@
         <button class="btn btn-dark btn-custom w-100" routerLink="/nuevorequerimiento">Nuevo requerimiento</button>
       </div>
       <div class="col d-flex justify-content-center m-3">
-        <button class="btn btn-dark btn-custom w-100" routerLink="/misrequerimientos">Requerimientos en proceso</button>
+        <button class="btn btn-dark btn-custom w-100" [routerLink]="['/misrequerimientos', 'Pendiente']">Requerimientos en proceso</button>
       </div>
       <div class="col d-flex justify-content-center m-3">
-        <button class="btn btn-dark btn-custom w-100" routerLink="/misrequerimientos">Requerimientos cerrados</button>
+        <button class="btn btn-dark btn-custom w-100" [routerLink]="['/misrequerimientos', 'Finalizado']">Requerimientos cerrados</button>
       </div>
       <div class="col d-flex justify-content-center m-3">
         <button class="btn btn-dark btn-custom w-100">Consultar laboratorios</button>

@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MisRequerimientosComponent implements OnInit {
 
-  isRequerimientosCerrados:boolean = false;
+  estadoRequerimientos:string = '';
   requerimientos:Requerimiento[] = [];
 
   constructor(private requerimientosService:RequerimientosService, private modalService:NgbModal, private route:ActivatedRoute) { }
@@ -21,14 +21,12 @@ export class MisRequerimientosComponent implements OnInit {
 
     let legajo = localStorage.getItem('legajo');
 
-    if(legajo){
+    if (legajo) {
       this.requerimientosService.getRequerimientoByIdDocente(+legajo).subscribe(
         (requerimientos) => {
-          if(requerimientos){
-            this.requerimientos = requerimientos;
-            if(this.isRequerimientosCerrados){
-              this.requerimientos = this.requerimientos.filter((requerimiento) => requerimiento.estado === 'Finalizado');
-            }
+          if (requerimientos) {
+            this.estadoRequerimientos = this.route.snapshot.paramMap.get('estado') || '';
+            this.requerimientos = requerimientos.filter((requerimiento) => requerimiento.estado === this.estadoRequerimientos);
           }
         }
       );

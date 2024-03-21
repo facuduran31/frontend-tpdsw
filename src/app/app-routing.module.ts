@@ -32,7 +32,7 @@ const routes: Routes = [
   {path: 'nuevorequerimiento', component: AddRequerimientoComponent, canActivate: [verifyTokenDocente]},
   {path: 'misrequerimientos', component: MisRequerimientosComponent, canActivate: [verifyTokenDocente]},
   {path: 'misrequerimientos/editar/:id', component: AddRequerimientoComponent, canActivate: [verifyTokenDocente]},
-  {path: 'misrequerimientos/cerrados', component: MisRequerimientosComponent, canActivate: [verifyTokenDocente]},
+  {path: 'misrequerimientos/:estado', component: MisRequerimientosComponent, canActivate: [verifyTokenDocente]},
   {path: 'requerimientos/:id', component: VerRequerimientoComponent, canActivate: [verifyTokenEncargado]},
   {path: 'requerimientos', component: VerRequerimientosComponent, canActivate: [verifyTokenEncargado]},
   {path: '**', redirectTo: '', pathMatch: 'full'}
