@@ -24,6 +24,7 @@ import { VerRequerimientosComponent } from './components/ver-requerimientos/ver-
 import { VerRequerimientoComponent } from './components/ver-requerimiento/ver-requerimiento.component';
 import { CalendarioComponent } from './components/calendario/calendario.component';
 import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWeekService, MonthService, MonthAgendaService } from '@syncfusion/ej2-angular-schedule';
+import { PanelencargadosComponent } from './panelencargados/panelencargados.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,8 @@ import { ScheduleModule, RecurrenceEditorModule, DayService, WeekService, WorkWe
     AddComputadoraComponent,
     VerRequerimientosComponent,
     VerRequerimientoComponent,
-    CalendarioComponent
+    CalendarioComponent,
+    PanelencargadosComponent
   ],
   imports: [
     BrowserModule,

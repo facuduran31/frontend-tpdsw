@@ -72,9 +72,9 @@ export class LoginComponent {
           }else{
             if(response.usuarioAutenticado.tipoUsuario === 'Encargado')
             {
-              this.router.navigate(['/maquinasvirtuales']);
+              this.router.navigate(['/panelencargado']);
             }else{
-              this.router.navigate(['/panel']);
+              this.router.navigate(['/paneldocente']);
             }
           }
         }

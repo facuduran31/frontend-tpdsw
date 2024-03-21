@@ -13,11 +13,13 @@ import { AddComputadoraComponent } from './components/add-computadora/add-comput
 import { VerRequerimientosComponent } from './components/ver-requerimientos/ver-requerimientos.component';
 import { VerRequerimientoComponent } from './components/ver-requerimiento/ver-requerimiento.component';
 import { verifyTokenDocente, verifyTokenEncargado } from './guards/login.guard';
+import { PanelencargadosComponent } from './panelencargados/panelencargados.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'panel', component: PaneldocentesComponent, canActivate: [verifyTokenDocente]},
+  {path: 'paneldocente', component: PaneldocentesComponent, canActivate: [verifyTokenDocente]},
+  {path: 'panelencargado', component: PanelencargadosComponent, canActivate: [verifyTokenEncargado]},
   {path: 'maquinasvirtuales/add', component: AddMaquinaVirtualComponent, canActivate: [verifyTokenEncargado]},
   {path: 'maquinasvirtuales/editar/:id', component: AddMaquinaVirtualComponent, canActivate: [verifyTokenEncargado]},
   {path: 'maquinasvirtuales', component: MaquinasVirtualesComponent, canActivate: [verifyTokenEncargado]},
