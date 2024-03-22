@@ -29,7 +29,7 @@ Regularidad:
 |CRUD simple|1. CRUD Usuario<br>2. CRUD Laboratorio<br>3. CRUD Máquina Virtual<br>|
 |CRUD dependiente|1. CRUD Computadora {depende de} CRUD Laboratorio|
 |Listado<br>+<br>detalle| 1. Listado de requerimientos de un docente por estado. => detalle CRUD Requerimientos.<br>|
-|CUU/Epic|1. Registrar reserva.<br>2. Confirmar reserva.|
+|CUU/Epic|1. Registrar requerimiento.<br>2. Atender requerimiento.|
 
 
 ### Alcance Adicional Voluntario
@@ -37,6 +37,5 @@ Regularidad:
 Adicionales para Aprobación
 |Requerimiento|Detalle|
 |:-|:-|
-|Listado<br>+<br>detalle| 1. Listado de máquinas virtuales que tengan un software. => detalle CRUD Máquinas Virtuales.|
 |CUU/Epic|1. Cancelar reserva.|
 |Otros|1. Notificación de estado final de reserva vía mail.|
