@@ -1,27 +1,42 @@
-# Frontend
+# Propuesta TP DSW
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
+## Grupo
+### Integrantes
+* 50204 - Duran, Facundo Nicolás
+* 49853 - Gianotto, Leandro
+* 49438 - Simbel, Santino
 
-## Development server
+### Repositorios
+* [frontend app](https://github.com/facuduran31/frontend-tpdsw.git)
+* [backend app](https://github.com/facuduran31/backend-tpdsw.git)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Tema
+### Descripción
+Se desarrollará un sistema de información utilizada por docentes para reservar un laboratorio un día específico o por cuatrimestre, además de materiales adicionales como notebooks, proyectores, etc. Por otro lado, los encargados de laboratorios gestionan las solicitudes de reservas, y las características de los laboratorios con sus respectivas computadoras y máquinas virtuales.
 
-## Code scaffolding
+### Modelo
+![imagen del modelo](https://imgur.com/soer9xz)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Alcance Funcional 
 
-## Running unit tests
+### Alcance Mínimo
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Regularidad:
+|Requerimiento|Detalle|
+|:-|:-|
+|CRUD simple|1. CRUD Usuario<br>2. CRUD Computadora<br>3. CRUD Máquina Virtual<br>4. CRUD Recurso<br>5. CRUD Laboratorio<br>6. CRUD Notebook<br>7. CRUD Proyector<br>8. CRUD Encargado<br>9. CRUD Reserva<br>10. CRUD Computadora_maquina_virtual<br>11. CRUD Notebook_Maquina_Virtual|
+|CRUD dependiente|1. CRUD reserva {depende de} CRUD docente+laboratorio+recurso<br>2. CRUD computadora  {depende de} CRUD lab|
+|Listado<br>+<br>detalle| 1. Listado de laboratorios disponibles para una fecha y hora seleccionada. => detalle CRUD Laboratorio.<br> 2. Listado de reservas que tengan estado pendiente. => detalle CRUD Reserva.|
+|CUU/Epic|1. Registrar reserva.<br>2. Confirmar reserva.|
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Alcance Adicional Voluntario
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Adicionales para Aprobación
+|Requerimiento|Detalle|
+|:-|:-|
+|Listado<br>+<br>detalle| 1. Listado de máquinas virtuales que tengan un software. => detalle CRUD Máquinas Virtuales.|
+|CUU/Epic|1. Cancelar reserva.|
+|Otros|1. Notificación de estado final de reserva vía mail.|
