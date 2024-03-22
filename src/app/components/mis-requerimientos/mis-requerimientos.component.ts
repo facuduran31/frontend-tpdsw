@@ -26,7 +26,11 @@ export class MisRequerimientosComponent implements OnInit {
         (requerimientos) => {
           if (requerimientos) {
             this.estadoRequerimientos = this.route.snapshot.paramMap.get('estado') || '';
-            this.requerimientos = requerimientos.filter((requerimiento) => requerimiento.estado === this.estadoRequerimientos);
+            if(this.estadoRequerimientos == 'Pendiente'){
+              this.requerimientos = requerimientos.filter((requerimiento) => requerimiento.estado === (this.estadoRequerimientos || 'Atendido'));
+            }else{
+              this.requerimientos = requerimientos.filter((requerimiento) => requerimiento.estado === this.estadoRequerimientos);
+            }
           }
         }
       );
