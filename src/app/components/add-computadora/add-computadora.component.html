@@ -15,9 +15,10 @@
           <label for="Almacenamiento" class="form-label mt-4">Descripcion Almacenamiento:</label>
           <input type="text" class="form-control" id="Almacenamiento" name="Almacenamiento" placeholder="256GB SSD" [(ngModel)]="computadora.descripcionAlmacenamiento">
           <label for="imagen" class="form-label mt-4">Imagen:</label>
-          <input type="text" class="form-control" id="imagen" name="imagen" placeholder="link" [(ngModel)]="computadora.imagen">
+          <input type="file" class="form-control-file" id="imagen" name="imagen" [(ngModel)]="computadora.imagen" (change)="seleccionarImagen($event)">
+          <img [src]="imgUrl" alt="Sin imagen" width="125">
         </div>
-        <button type="button" class="btn btn-primary mt-4" (click)="onSubmit()">Enviar</button>
+        <button type="button" class="btn btn-primary mt-4 mb-4" (click)="onSubmit()">Enviar</button>
       </fieldset>
     </form>
   </div>

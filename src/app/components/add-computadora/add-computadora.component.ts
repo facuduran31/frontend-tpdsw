@@ -23,6 +23,8 @@ export class AddComputadoraComponent implements OnInit {
 
   isEdit: boolean = false;
   
+  imgUrl: string = '../../assets/img/noimage.jpg';
+
   constructor(private computadorasService: ComputadorasService, private route: ActivatedRoute, private modalService:NgbModal, private router: Router) { }
 
   openComputadoraGuardadoModal(isEdit:boolean): void {
@@ -84,6 +86,16 @@ export class AddComputadoraComponent implements OnInit {
         console.error('Error al obtener el computadora:', error);
       }
     );
+  }
+
+  seleccionarImagen(event: any): void {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      this.imgUrl = reader.result as string;
+      this.computadora.imagen = this.imgUrl;
+    }
   }
 
   onSubmit(): void {
