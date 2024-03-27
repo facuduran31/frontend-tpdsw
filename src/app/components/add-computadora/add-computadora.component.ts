@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Computadora } from 'src/app/model/Computadora';
 import { ComputadorasService } from 'src/app/services/computadoras.service';
 import { ModalContentComponent } from '../modal-content/modal-content.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-add-computadora',
@@ -21,11 +22,13 @@ export class AddComputadoraComponent implements OnInit {
     laboratorio_idLaboratorio: 0
   }
 
+  images = '';
+
   isEdit: boolean = false;
   
-  imgUrl: string = '../../assets/img/noimage.jpg';
+  imgURL: string = '../../assets/img/noimage.jpg';
 
-  constructor(private computadorasService: ComputadorasService, private route: ActivatedRoute, private modalService:NgbModal, private router: Router) { }
+  constructor(private computadorasService: ComputadorasService, private route: ActivatedRoute, private modalService:NgbModal, private router: Router, private http:HttpClient) { }
 
   openComputadoraGuardadoModal(isEdit:boolean): void {
     const modalRef = this.modalService.open(ModalContentComponent);
@@ -88,17 +91,19 @@ export class AddComputadoraComponent implements OnInit {
     );
   }
 
-  seleccionarImagen(event: any): void {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      this.imgUrl = reader.result as string;
-      this.computadora.imagen = this.imgUrl;
+  selectImage(event:any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+       reader.readAsDataURL(file);
+       reader.onload = (event: any)=>{
+         this.imgURL = event.target.result;
+       }
+      this.images = file;
     }
   }
 
-  onSubmit(): void {
+  guardarComputadora(): void {
     if(this.computadora != null){
       this.computadorasService.guardarComputadora(this.computadora, this.isEdit).subscribe(
         response => {
@@ -110,5 +115,21 @@ export class AddComputadoraComponent implements OnInit {
         }
       );
     }
+  }
+
+  onSubmit(): void {
+    const formData = new FormData();
+    formData.append('file', this.images);
+    this.http.post('http://localhost:3000/file', formData).subscribe(
+      (response: any) => {
+        this.computadora.imagen = response;
+        console.log(this.computadora);
+        this.guardarComputadora();
+      },
+      error => {
+        console.log(error);
+      }
+    );
+    //this.guardarComputadora();
   }
 }
