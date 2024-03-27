@@ -43,8 +43,8 @@ export class AddComputadoraComponent implements OnInit {
     modalRef.componentInstance.buttonText = 'Aceptar';
     modalRef.componentInstance.buttonClass = 'btn-primary';
     modalRef.result.then((result) => {
-      if (result === 'Aceptar') {
-        this.router.navigate(['']);
+      if (result === 'cerrar') {
+        this.router.navigate(['/laboratorios/'+this.computadora.laboratorio_idLaboratorio]);
       }
     });
   }
