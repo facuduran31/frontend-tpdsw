@@ -11,7 +11,7 @@
            <li class="list-group-item">ID: {{requerimiento.idRequerimiento}}</li>
            <li class="list-group-item">Tipo de Requerimiento: {{requerimiento.tipoRequerimiento}}</li>
            <li class="list-group-item">Estado: {{requerimiento.estado}}</li>
-           <li class="list-group-item">Docente: </li>
+           <li class="list-group-item">Docente: {{requerimiento.docente}}</li>
            <li class="list-group-item" *ngIf="requerimiento.tipoRequerimiento == 'Reserva de laboratorio'">HDMI: {{requerimiento.hdmi?'Sí':'No'}}</li>
            <li class="list-group-item" *ngIf="requerimiento.tipoRequerimiento == 'Reserva de laboratorio'">VGA: {{requerimiento.vga?'Sí':'No'}}</li>
            <li class="list-group-item" *ngIf="requerimiento.tipoRequerimiento == 'Reserva de laboratorio'">Mouse: {{requerimiento.mouse?'Sí':'No'}}</li>

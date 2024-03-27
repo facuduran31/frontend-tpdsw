@@ -6,6 +6,7 @@ import { LaboratorioService } from 'src/app/services/laboratorios.service';
 import { RequerimientosService } from 'src/app/services/requerimientos.service';
 import { ModalContentComponent } from '../modal-content/modal-content.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DocentesService } from 'src/app/services/docentes.service';
 
 @Component({
   selector: 'app-ver-requerimiento',
@@ -39,7 +40,7 @@ export class VerRequerimientoComponent implements OnInit {
     docente: ''
   };
 
-  constructor(private requerimientosService: RequerimientosService, private laboratoriosService:LaboratorioService, private route:ActivatedRoute, private modalService:NgbModal, private router:Router) { }
+  constructor(private requerimientosService: RequerimientosService, private laboratoriosService:LaboratorioService, private docentesService:DocentesService, private route:ActivatedRoute, private modalService:NgbModal, private router:Router) { }
 
   ngOnInit(): void {
     const routeSnapshot = this.route.snapshot;
@@ -49,6 +50,20 @@ export class VerRequerimientoComponent implements OnInit {
         if (data != null){
           this.requerimiento = data;
           this.getLaboratorios();
+          if(this.requerimiento.legajoDocente != null) this.getDocente(this.requerimiento.legajoDocente);
+        }
+      },
+      err => {
+        console.error(err);
+      }
+    );
+  }
+
+  getDocente(legajo: string){
+    this.docentesService.getDocenteByLegajo(legajo).subscribe(
+      docente => {
+        if (docente != null){
+          this.requerimiento.docente = docente.apellido + ', ' + docente.nombre;
         }
       },
       err => {
