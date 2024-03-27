@@ -44,7 +44,7 @@ export class AddComputadoraComponent implements OnInit {
     modalRef.componentInstance.buttonClass = 'btn-primary';
     modalRef.result.then((result) => {
       if (result === 'cerrar') {
-        this.router.navigate(['/laboratorios/'+this.computadora.laboratorio_idLaboratorio]);
+        this.router.navigate(['/laboratorios/'+this.route.snapshot.params['id']]);
       }
     });
   }
@@ -83,6 +83,10 @@ export class AddComputadoraComponent implements OnInit {
       computadora => {
         if (computadora != null) {
           this.computadora =  computadora;
+          // Si hay una imagen cargada, mostrarla
+          if (this.computadora.imagen) {
+            this.imgURL = 'http://localhost:3000/'+this.computadora.imagen;
+          }
         }
       },
       error => {
@@ -95,10 +99,10 @@ export class AddComputadoraComponent implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       const reader = new FileReader();
-       reader.readAsDataURL(file);
-       reader.onload = (event: any)=>{
-         this.imgURL = event.target.result;
-       }
+      reader.readAsDataURL(file);
+      reader.onload = (event: any)=>{
+        this.imgURL = event.target.result;
+      }
       this.images = file;
     }
   }
@@ -127,9 +131,9 @@ export class AddComputadoraComponent implements OnInit {
         this.guardarComputadora();
       },
       error => {
+        this.guardarComputadora();
         console.log(error);
       }
     );
-    //this.guardarComputadora();
   }
 }
