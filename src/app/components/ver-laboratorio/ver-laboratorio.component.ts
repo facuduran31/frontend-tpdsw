@@ -17,15 +17,12 @@ export class VerLaboratorioComponent implements OnInit {
   imagenes: any;
 
   mostrarImg(){
-    
     this.http.get<any>('http://localhost:3000/upload').subscribe(res => {
-    
-    this.imagenes = res;
-    const reader = new FileReader();
-    reader.onload = (this.imagenes);
-       
-    console.log(this.imagenes);
-    });
+      this.imagenes = res;
+      const reader = new FileReader();
+      reader.onload = (this.imagenes);
+    }
+  );
 
   }
   

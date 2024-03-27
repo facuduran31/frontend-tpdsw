@@ -1,5 +1,5 @@
 <div class="card" style="width: 18rem;">
-  <img [src]="'http://localhost:3000/'+imagen" class="card-img-top" [alt]="titulo" *ngIf="imagen != null">
+  <img [src]="imagen" class="card-img-top" [alt]="titulo" *ngIf="imagen != null">
   <div class="card-body">
     <h5 class="card-title">{{titulo}}</h5>
     <p class="card-text" *ngFor="let descripcion of descripciones">

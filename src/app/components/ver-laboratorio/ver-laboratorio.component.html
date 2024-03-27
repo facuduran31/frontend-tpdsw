@@ -14,7 +14,7 @@
       <app-card *ngFor="let computadora of computadoras"
         class="m-3"
         [titulo]="'ID: '+ computadora.idComputadora.toString()"
-        [imagen]="computadora.imagen"
+        [imagen]="'http://localhost:3000/'+computadora.imagen"
         [id]="computadora.idComputadora"  
         [descripciones]="[
           'Almacenamiento: ' + computadora.descripcionAlmacenamiento,
