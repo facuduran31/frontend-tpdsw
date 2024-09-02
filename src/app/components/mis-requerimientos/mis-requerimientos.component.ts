@@ -24,10 +24,11 @@ export class MisRequerimientosComponent implements OnInit {
     if (legajo) {
       this.requerimientosService.getRequerimientoByIdDocente(+legajo).subscribe(
         (requerimientos) => {
+          console.log(requerimientos)
           if (requerimientos) {
             this.estadoRequerimientos = this.route.snapshot.paramMap.get('estado') || '';
             if(this.estadoRequerimientos == 'Pendiente'){
-              this.requerimientos = requerimientos.filter((requerimiento) => requerimiento.estado === (this.estadoRequerimientos || 'Atendido'));
+              this.requerimientos = requerimientos.filter((requerimiento) => ((requerimiento.estado === this.estadoRequerimientos) || requerimiento.estado == 'Atendido'));
             }else{
               this.requerimientos = requerimientos.filter((requerimiento) => requerimiento.estado === this.estadoRequerimientos);
             }
