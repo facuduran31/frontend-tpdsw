@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Requerimiento } from '../model/Requerimiento';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RequerimientosService {
 
-  private apiUrl = 'http://localhost:3000/api/requerimientos';
+  private apiUrl = environment.url+'/api/requerimientos';
   private httpOptions = {}
 
   obtenerHeader()

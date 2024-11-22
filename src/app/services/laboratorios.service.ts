@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Laboratorio } from '../model/Laboratorio';
-import { Computadora } from '../model/Computadora'; 
+import { Computadora } from '../model/Computadora';
+import { environment } from 'src/environment/environment'; 
 
 @Injectable({
   providedIn: 'root'
 })
 export class LaboratorioService {
-  private apiUrl = 'http://localhost:3000/api/laboratorios';
+  private apiUrl = environment.url+'/api/laboratorios';
   private httpOptions = {}
 
   obtenerHeader()

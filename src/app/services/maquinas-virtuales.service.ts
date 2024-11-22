@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { MaquinaVirtual } from '../model/MaquinaVirtual';
+import { environment } from 'src/environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MaquinasVirtualesService {
-  private apiUrl = 'http://localhost:3000/api/maquinasvirtuales';
+  private apiUrl = environment.url+'/api/maquinasvirtuales';
   private httpOptions = {}
 
   obtenerHeader()
