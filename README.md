@@ -14,7 +14,9 @@
 ### Descripción
 Se desarrollará un sistema de información utilizada por docentes para reservar un laboratorio un día específico o por cuatrimestre, además de materiales adicionales como notebooks, proyectores, etc. Por otro lado, los encargados de laboratorios gestionan las solicitudes de reservas, y las características de los laboratorios con sus respectivas computadoras y máquinas virtuales.
 
-### Modelo<img width="891" height="967" alt="DER drawio" src="https://github.com/user-attachments/assets/27cece2f-6046-4f97-87c8-f136eecf1385" />
+### Modelo
+
+<img width="891" height="967" alt="DER drawio" src="https://github.com/user-attachments/assets/27cece2f-6046-4f97-87c8-f136eecf1385" />
 
 
 
