@@ -15,7 +15,7 @@
 Se desarrollará un sistema de información utilizada por docentes para reservar un laboratorio un día específico o por cuatrimestre, además de materiales adicionales como notebooks, proyectores, etc. Por otro lado, los encargados de laboratorios gestionan las solicitudes de reservas, y las características de los laboratorios con sus respectivas computadoras y máquinas virtuales.
 
 ### Modelo
-![imagen del modelo]([https://imgur.com/soer9xz](https://canva.link/njgv5w8a54gn24c))
+![imagen del modelo][https://imgur.com/soer9xz](https://canva.link/njgv5w8a54gn24c)
 
 
 
