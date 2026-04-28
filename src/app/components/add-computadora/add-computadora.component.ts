@@ -9,42 +9,51 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-add-computadora',
   templateUrl: './add-computadora.component.html',
-  styleUrls: ['./add-computadora.component.css']
+  styleUrls: ['./add-computadora.component.css'],
 })
 export class AddComputadoraComponent implements OnInit {
-
   computadora: Computadora = {
     idComputadora: 0,
     imagen: '',
     procesador: '',
     descripcionRam: '',
     descripcionAlmacenamiento: '',
-    laboratorio_idLaboratorio: 0
-  }
+    laboratorio_idLaboratorio: 0,
+  };
 
   images = '';
 
   isEdit: boolean = false;
-  
+
   imgURL: string = '../../assets/img/noimage.jpg';
 
-  constructor(private computadorasService: ComputadorasService, private route: ActivatedRoute, private modalService:NgbModal, private router: Router, private http:HttpClient) { }
+  constructor(
+    private computadorasService: ComputadorasService,
+    private route: ActivatedRoute,
+    private modalService: NgbModal,
+    private router: Router,
+    private http: HttpClient,
+  ) {}
 
-  openComputadoraGuardadoModal(isEdit:boolean): void {
+  openComputadoraGuardadoModal(isEdit: boolean): void {
     const modalRef = this.modalService.open(ModalContentComponent);
-    if(isEdit){
+    if (isEdit) {
       modalRef.componentInstance.name = 'Edición completa';
-      modalRef.componentInstance.message = 'Se ha editado con éxito el computadora';
-    }else{
+      modalRef.componentInstance.message =
+        'Se ha editado con éxito el computadora';
+    } else {
       modalRef.componentInstance.name = 'Carga completa';
-      modalRef.componentInstance.message = 'Se ha creado con éxito el computadora';
+      modalRef.componentInstance.message =
+        'Se ha creado con éxito el computadora';
     }
     modalRef.componentInstance.type = 'alert';
     modalRef.componentInstance.buttonText = 'Aceptar';
     modalRef.componentInstance.buttonClass = 'btn-primary';
     modalRef.result.then((result) => {
       if (result === 'cerrar') {
-        this.router.navigate(['/laboratorios/'+this.route.snapshot.params['id']]);
+        this.router.navigate([
+          '/laboratorios/' + this.route.snapshot.params['id'],
+        ]);
       }
     });
   }
@@ -52,7 +61,8 @@ export class AddComputadoraComponent implements OnInit {
   openErrorModal(): void {
     const modalRef = this.modalService.open(ModalContentComponent);
     modalRef.componentInstance.name = 'Se ha producido un error';
-    modalRef.componentInstance.message = 'No se ha podido procesar la solicitud.';
+    modalRef.componentInstance.message =
+      'No se ha podido procesar la solicitud.';
     modalRef.componentInstance.type = 'alert';
     modalRef.componentInstance.buttonText = 'Aceptar';
     modalRef.componentInstance.buttonClass = 'btn-primary';
@@ -62,13 +72,17 @@ export class AddComputadoraComponent implements OnInit {
       }
     });
   }
-  
-  ngOnInit(): void {
 
-    this.computadora.laboratorio_idLaboratorio = Number(this.route.snapshot.params['id']);
-    
+  ngOnInit(): void {
+    this.computadora.laboratorio_idLaboratorio = Number(
+      this.route.snapshot.params['id'],
+    );
+
     const routeSnapshot = this.route.snapshot;
-    if (routeSnapshot.url.length > 0 && routeSnapshot.url[2].path === 'editar') {
+    if (
+      routeSnapshot.url.length > 0 &&
+      routeSnapshot.url[2].path === 'editar'
+    ) {
       this.isEdit = true;
     }
 
@@ -80,44 +94,46 @@ export class AddComputadoraComponent implements OnInit {
 
   private loadComputadora(idComputadora: number) {
     this.computadorasService.getComputadora(idComputadora).subscribe(
-      computadora => {
+      (computadora) => {
         if (computadora != null) {
-          this.computadora =  computadora;
+          this.computadora = computadora;
           // Si hay una imagen cargada, mostrarla
           if (this.computadora.imagen) {
-            this.imgURL = 'http://localhost:3000/'+this.computadora.imagen;
+            this.imgURL = 'http://localhost:3000/' + this.computadora.imagen;
           }
         }
       },
-      error => {
+      (error) => {
         console.error('Error al obtener el computadora:', error);
-      }
+      },
     );
   }
 
-  selectImage(event:any) {
+  selectImage(event: any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      reader.onload = (event: any)=>{
+      reader.onload = (event: any) => {
         this.imgURL = event.target.result;
-      }
+      };
       this.images = file;
     }
   }
 
   guardarComputadora(): void {
-    if(this.computadora != null){
-      this.computadorasService.guardarComputadora(this.computadora, this.isEdit).subscribe(
-        response => {
-          this.openComputadoraGuardadoModal(this.isEdit);
-        },
-        error => {
-          this.openErrorModal();
-          console.log(error, this.computadora)
-        }
-      );
+    if (this.computadora != null) {
+      this.computadorasService
+        .guardarComputadora(this.computadora, this.isEdit)
+        .subscribe(
+          (response) => {
+            this.openComputadoraGuardadoModal(this.isEdit);
+          },
+          (error) => {
+            this.openErrorModal();
+            console.log(error, this.computadora);
+          },
+        );
     }
   }
 
@@ -130,10 +146,10 @@ export class AddComputadoraComponent implements OnInit {
         console.log(this.computadora);
         this.guardarComputadora();
       },
-      error => {
+      (error) => {
         this.guardarComputadora();
         console.log(error);
-      }
+      },
     );
   }
 }

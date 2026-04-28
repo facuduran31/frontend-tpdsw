@@ -7,17 +7,20 @@ import { ModalContentComponent } from '../modal-content/modal-content.component'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-
-  constructor(private loginService:LoginService, private router:Router, private modalService: NgbModal) {
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private modalService: NgbModal,
+  ) {
     this.validarSesionActiva();
   }
 
-  email:string = "";
-  password:string = "";
-  token:string = "";
+  email: string = '';
+  password: string = '';
+  token: string = '';
 
   login() {
     this.loginService.login(this.email, this.password).subscribe(
@@ -30,14 +33,15 @@ export class LoginComponent {
       (error) => {
         console.log(error);
         this.openModal();
-      }
-    )
+      },
+    );
   }
 
   openModal() {
     const modalRef = this.modalService.open(ModalContentComponent);
     modalRef.componentInstance.name = 'Error al iniciar sesión';
-    modalRef.componentInstance.message = 'El email o la contraseña son incorrectos, por favor verifique los datos ingresados.';
+    modalRef.componentInstance.message =
+      'El email o la contraseña son incorrectos, por favor verifique los datos ingresados.';
     modalRef.result.then((result) => {
       if (result === 'cerrar') {
         this.router.navigate(['']);
@@ -48,7 +52,8 @@ export class LoginComponent {
   sesionExpirada(): void {
     const modalRef = this.modalService.open(ModalContentComponent);
     modalRef.componentInstance.name = 'Sesión expirada';
-    modalRef.componentInstance.message = 'Su sesión ha expirado, por favor inicie sesión nuevamente.';
+    modalRef.componentInstance.message =
+      'Su sesión ha expirado, por favor inicie sesión nuevamente.';
     modalRef.componentInstance.type = 'alert';
     modalRef.componentInstance.buttonText = 'Aceptar';
     modalRef.componentInstance.buttonClass = 'btn-primary';
@@ -59,27 +64,21 @@ export class LoginComponent {
     });
   }
 
-  validarSesionActiva()
-  {
+  validarSesionActiva() {
     const token = localStorage.getItem('token');
-    if(token != null)
-    {
-      this.loginService.verifyToken(token).subscribe(
-        (response) => {
-          if(response.isTokenExpirado == true)
-          {
-            this.router.navigate(['']);
-          }else{
-            if(response.usuarioAutenticado.tipoUsuario === 'Encargado')
-            {
-              this.router.navigate(['/panelencargado']);
-            }else{
-              this.router.navigate(['/paneldocente']);
-            }
+    if (token != null) {
+      this.loginService.verifyToken(token).subscribe((response) => {
+        if (response.isTokenExpirado == true) {
+          this.router.navigate(['']);
+        } else {
+          if (response.usuarioAutenticado.tipoUsuario === 'Encargado') {
+            this.router.navigate(['/panelencargado']);
+          } else {
+            this.router.navigate(['/paneldocente']);
           }
         }
-      )
-    }else{
+      });
+    } else {
       this.router.navigate(['']);
     }
   }

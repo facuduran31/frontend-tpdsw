@@ -8,9 +8,8 @@ describe('AddMaquinaVirtualComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddMaquinaVirtualComponent ]
-    })
-    .compileComponents();
+      declarations: [AddMaquinaVirtualComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(AddMaquinaVirtualComponent);
     component = fixture.componentInstance;

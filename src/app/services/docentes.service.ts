@@ -5,25 +5,23 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DocentesService {
+  private apiUrl = environment.url + '/api/docentes';
+  private httpOptions = {};
 
-  private apiUrl = environment.url+'/api/docentes';
-  private httpOptions = {}
-
-  obtenerHeader()
-  {
+  obtenerHeader() {
     const token = localStorage.getItem('token') || '';
 
     this.httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': token
-      })
-    }
+        Authorization: token,
+      }),
+    };
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getDocentes(): Observable<Docente[] | null> {
     this.obtenerHeader();

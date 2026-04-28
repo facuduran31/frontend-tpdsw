@@ -1,20 +1,38 @@
 <div class="container mt-5 rounded p-5" id="container-login">
   <div class="row">
-      <h1 class="text-center">BIENVENIDO</h1>
-      <h4 class="text-center">Acceso al sistema</h4>
+    <h1 class="text-center">BIENVENIDO</h1>
+    <h4 class="text-center">Acceso al sistema</h4>
   </div>
   <div class="row">
-      <div class="form-group">
-          <label for="InputEmail" class="form-label mt-4">Email</label>
-          <input type="email" [(ngModel)]="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Ingrese su correo electrónico" (keyup.enter)="login()">
-      </div>
+    <div class="form-group">
+      <label for="InputEmail" class="form-label mt-4">Email</label>
+      <input
+        type="email"
+        [(ngModel)]="email"
+        class="form-control"
+        id="InputEmail"
+        aria-describedby="emailHelp"
+        placeholder="Ingrese su correo electrónico"
+        (keyup.enter)="login()"
+      />
+    </div>
   </div>
   <div class="form-group">
-      <label for="InputPassword" class="form-label mt-4">Contraseña</label>
-      <input type="password" [(ngModel)]="password" class="form-control" id="InputPassword" placeholder="Ingrese su contraseña" autocomplete="off" (keyup.enter)="login()">
+    <label for="InputPassword" class="form-label mt-4">Contraseña</label>
+    <input
+      type="password"
+      [(ngModel)]="password"
+      class="form-control"
+      id="InputPassword"
+      placeholder="Ingrese su contraseña"
+      autocomplete="off"
+      (keyup.enter)="login()"
+    />
   </div>
 
   <div class="d-flex justify-content-center">
-      <button type="submit" class="btn btn-primary mt-5" (click)="login()">Ingresar</button>
+    <button type="submit" class="btn btn-primary mt-5" (click)="login()">
+      Ingresar
+    </button>
   </div>
 </div>

@@ -5,36 +5,39 @@ import { Requerimiento } from '../model/Requerimiento';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RequerimientosService {
+  private apiUrl = environment.url + '/api/requerimientos';
+  private httpOptions = {};
 
-  private apiUrl = environment.url+'/api/requerimientos';
-  private httpOptions = {}
-
-  obtenerHeader()
-  {
+  obtenerHeader() {
     const token = localStorage.getItem('token') || '';
 
     this.httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': token
-      })
-    }
+        Authorization: token,
+      }),
+    };
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  guardarRequerimiento(requerimiento: Requerimiento, isEdit:boolean): Observable<{ id: number }> {
+  guardarRequerimiento(
+    requerimiento: Requerimiento,
+    isEdit: boolean,
+  ): Observable<{ id: number }> {
     if (isEdit == true && requerimiento.idRequerimiento) {
-      return this.actualizarRequerimiento(requerimiento.idRequerimiento, requerimiento);
+      return this.actualizarRequerimiento(
+        requerimiento.idRequerimiento,
+        requerimiento,
+      );
     } else {
       return this.crearRequerimiento(requerimiento);
     }
   }
 
-  getMaquinasVirtuales(): Observable<Requerimiento[] | null>{
-
+  getMaquinasVirtuales(): Observable<Requerimiento[] | null> {
     this.obtenerHeader();
 
     return this.http.get<Requerimiento[]>(this.apiUrl, this.httpOptions);
@@ -47,24 +50,41 @@ export class RequerimientosService {
 
   getRequerimiento(id: number): Observable<Requerimiento | null> {
     this.obtenerHeader();
-    return this.http.get<Requerimiento>(`${this.apiUrl}/${id}`, this.httpOptions);
+    return this.http.get<Requerimiento>(
+      `${this.apiUrl}/${id}`,
+      this.httpOptions,
+    );
   }
 
   getRequerimientoByIdDocente(id: number): Observable<Requerimiento[] | null> {
     this.obtenerHeader();
-    return this.http.get<Requerimiento[]>(`${this.apiUrl}/docente/${id}`, this.httpOptions);
+    return this.http.get<Requerimiento[]>(
+      `${this.apiUrl}/docente/${id}`,
+      this.httpOptions,
+    );
   }
 
   crearRequerimiento(requerimiento: Requerimiento): Observable<{ id: number }> {
     this.obtenerHeader();
     requerimiento.legajoDocente = localStorage.getItem('legajo');
     requerimiento.estado = 'Pendiente';
-    return this.http.post<{ id: number }>(this.apiUrl, requerimiento, this.httpOptions);
+    return this.http.post<{ id: number }>(
+      this.apiUrl,
+      requerimiento,
+      this.httpOptions,
+    );
   }
 
-  actualizarRequerimiento(id: number, requerimiento: Requerimiento): Observable<any> {
+  actualizarRequerimiento(
+    id: number,
+    requerimiento: Requerimiento,
+  ): Observable<any> {
     this.obtenerHeader();
-    return this.http.put(`${this.apiUrl}/${id}`, requerimiento, this.httpOptions);
+    return this.http.put(
+      `${this.apiUrl}/${id}`,
+      requerimiento,
+      this.httpOptions,
+    );
   }
 
   eliminarRequerimiento(id: number): Observable<any> {

@@ -5,35 +5,39 @@ import { MaquinaVirtual } from '../model/MaquinaVirtual';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MaquinasVirtualesService {
-  private apiUrl = environment.url+'/api/maquinasvirtuales';
-  private httpOptions = {}
+  private apiUrl = environment.url + '/api/maquinasvirtuales';
+  private httpOptions = {};
 
-  obtenerHeader()
-  {
+  obtenerHeader() {
     const token = localStorage.getItem('token') || '';
 
     this.httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': token
-      })
-    }
+        Authorization: token,
+      }),
+    };
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  guardarMaquinaVirtual(maquinaVirtual: MaquinaVirtual, isEdit:boolean): Observable<{ id: number }> {
+  guardarMaquinaVirtual(
+    maquinaVirtual: MaquinaVirtual,
+    isEdit: boolean,
+  ): Observable<{ id: number }> {
     if (isEdit == true) {
-      return this.actualizarMaquinaVirtual(maquinaVirtual.idMaquinaVirtual, maquinaVirtual);
+      return this.actualizarMaquinaVirtual(
+        maquinaVirtual.idMaquinaVirtual,
+        maquinaVirtual,
+      );
     } else {
       return this.crearMaquinaVirtual(maquinaVirtual);
     }
   }
 
-  getMaquinasVirtuales(): Observable<MaquinaVirtual[] | null>{
-
+  getMaquinasVirtuales(): Observable<MaquinaVirtual[] | null> {
     this.obtenerHeader();
 
     return this.http.get<MaquinaVirtual[]>(this.apiUrl, this.httpOptions);
@@ -41,19 +45,35 @@ export class MaquinasVirtualesService {
 
   getMaquinaVirtual(id: number): Observable<MaquinaVirtual | null> {
     this.obtenerHeader();
-    
-    return this.http.get<MaquinaVirtual>(`${this.apiUrl}/${id}`, this.httpOptions);
+
+    return this.http.get<MaquinaVirtual>(
+      `${this.apiUrl}/${id}`,
+      this.httpOptions,
+    );
   }
 
-  crearMaquinaVirtual(maquinaVirtual: MaquinaVirtual): Observable<{ id: number }> {
+  crearMaquinaVirtual(
+    maquinaVirtual: MaquinaVirtual,
+  ): Observable<{ id: number }> {
     this.obtenerHeader();
 
-    return this.http.post<{ id: number }>(this.apiUrl, maquinaVirtual, this.httpOptions);
+    return this.http.post<{ id: number }>(
+      this.apiUrl,
+      maquinaVirtual,
+      this.httpOptions,
+    );
   }
 
-  actualizarMaquinaVirtual(id: number, maquinaVirtual: MaquinaVirtual): Observable<any> {
+  actualizarMaquinaVirtual(
+    id: number,
+    maquinaVirtual: MaquinaVirtual,
+  ): Observable<any> {
     this.obtenerHeader();
-    return this.http.put(`${this.apiUrl}/${id}`, maquinaVirtual, this.httpOptions);
+    return this.http.put(
+      `${this.apiUrl}/${id}`,
+      maquinaVirtual,
+      this.httpOptions,
+    );
   }
 
   eliminarMaquinaVirtual(id: number): Observable<any> {

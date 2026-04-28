@@ -11,13 +11,12 @@ import { DocentesService } from 'src/app/services/docentes.service';
 @Component({
   selector: 'app-ver-requerimiento',
   templateUrl: './ver-requerimiento.component.html',
-  styleUrls: ['./ver-requerimiento.component.css']
+  styleUrls: ['./ver-requerimiento.component.css'],
 })
 export class VerRequerimientoComponent implements OnInit {
-
   idRequerimiento: number = 0;
   laboratorios: Laboratorio[] = [];
-  requerimiento:Requerimiento = {
+  requerimiento: Requerimiento = {
     idRequerimiento: null,
     tipoRequerimiento: '',
     tipoReserva: '',
@@ -37,76 +36,89 @@ export class VerRequerimientoComponent implements OnInit {
     horaFin: null,
     proyector: false,
     zapatilla: false,
-    docente: ''
+    docente: '',
   };
 
-  constructor(private requerimientosService: RequerimientosService, private laboratoriosService:LaboratorioService, private docentesService:DocentesService, private route:ActivatedRoute, private modalService:NgbModal, private router:Router) { }
+  constructor(
+    private requerimientosService: RequerimientosService,
+    private laboratoriosService: LaboratorioService,
+    private docentesService: DocentesService,
+    private route: ActivatedRoute,
+    private modalService: NgbModal,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     const routeSnapshot = this.route.snapshot;
     this.idRequerimiento = routeSnapshot.params['id'];
     this.requerimientosService.getRequerimiento(this.idRequerimiento).subscribe(
-      data => {
-        if (data != null){
+      (data) => {
+        if (data != null) {
           this.requerimiento = data;
           this.getLaboratorios();
-          if(this.requerimiento.legajoDocente != null) this.getDocente(this.requerimiento.legajoDocente);
+          if (this.requerimiento.legajoDocente != null)
+            this.getDocente(this.requerimiento.legajoDocente);
         }
       },
-      err => {
+      (err) => {
         console.error(err);
-      }
+      },
     );
   }
 
-  getDocente(legajo: string){
+  getDocente(legajo: string) {
     this.docentesService.getDocenteByLegajo(legajo).subscribe(
-      docente => {
-        if (docente != null){
+      (docente) => {
+        if (docente != null) {
           this.requerimiento.docente = docente.apellido + ', ' + docente.nombre;
         }
       },
-      err => {
+      (err) => {
         console.error(err);
-      }
-    );
-  }
-
-  getLaboratorios(){
-    this.laboratoriosService.getLaboratorios().subscribe(
-      data => {
-        if (data != null)
-        this.laboratorios = data;
       },
-      err => {
-        console.error(err);
-      }
     );
   }
 
-  guardarRequerimiento(requerimiento: Requerimiento){
-    if(requerimiento.idRequerimiento != null){
-      this.requerimientosService.actualizarRequerimiento(requerimiento.idRequerimiento, requerimiento).subscribe(
-        data => {
-          console.log(data);
-          this.openModal();
-        },
-        err => {
-          console.error(err);
-        }
-      );
+  getLaboratorios() {
+    this.laboratoriosService.getLaboratorios().subscribe(
+      (data) => {
+        if (data != null) this.laboratorios = data;
+      },
+      (err) => {
+        console.error(err);
+      },
+    );
+  }
+
+  guardarRequerimiento(requerimiento: Requerimiento) {
+    if (requerimiento.idRequerimiento != null) {
+      this.requerimientosService
+        .actualizarRequerimiento(requerimiento.idRequerimiento, requerimiento)
+        .subscribe((data) => {
+          if (data.mailEnviado) {
+            this.modalService.open(
+              ModalContentComponent,
+            ).componentInstance.message =
+              'Estado actualizado y docente notificado.';
+          } else {
+            this.modalService.open(
+              ModalContentComponent,
+            ).componentInstance.message =
+              'Estado actualizado (sin notificación).';
+          }
+        });
     }
   }
 
   openModal() {
     const modalRef = this.modalService.open(ModalContentComponent);
     modalRef.componentInstance.name = 'Cambios guardados';
-    modalRef.componentInstance.message = 'Se ha actualizado el estado de la reserva y se ha notificado al docente.';
+    modalRef.componentInstance.message =
+      'Se ha actualizado el estado de la reserva y se ha notificado al docente.';
     modalRef.result.then((result) => {
       if (result === 'cerrar') {
         this.router.navigate(['']);
       }
     });
   }
-
 }

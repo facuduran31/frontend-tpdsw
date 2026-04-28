@@ -1,6 +1,6 @@
 export interface MaquinaVirtual {
-    idMaquinaVirtual: number;
-    sistemaOperativo: string;
-    materias: string;
-    programas: string;
+  idMaquinaVirtual: number;
+  sistemaOperativo: string;
+  materias: string;
+  programas: string;
 }

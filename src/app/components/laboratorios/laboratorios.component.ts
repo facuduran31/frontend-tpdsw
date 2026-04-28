@@ -8,13 +8,16 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-laboratorios',
   templateUrl: './laboratorios.component.html',
-  styleUrls: ['./laboratorios.component.css']
+  styleUrls: ['./laboratorios.component.css'],
 })
-export class LaboratoriosComponent implements OnInit{
+export class LaboratoriosComponent implements OnInit {
+  constructor(
+    private router: Router,
+    private modalService: NgbModal,
+    private laboratoriosService: LaboratorioService,
+  ) {}
 
-  constructor(private router:Router, private modalService:NgbModal, private laboratoriosService:LaboratorioService) { }
-
-  laboratorios:Laboratorio[] = [];
+  laboratorios: Laboratorio[] = [];
 
   ngOnInit(): void {
     this.obtenerLaboratorios();
@@ -23,7 +26,8 @@ export class LaboratoriosComponent implements OnInit{
   sesionExpirada(): void {
     const modalRef = this.modalService.open(ModalContentComponent);
     modalRef.componentInstance.name = 'Sesión expirada';
-    modalRef.componentInstance.message = 'Su sesión ha expirado, por favor inicie sesión nuevamente.';
+    modalRef.componentInstance.message =
+      'Su sesión ha expirado, por favor inicie sesión nuevamente.';
     modalRef.componentInstance.type = 'alert';
     modalRef.componentInstance.buttonText = 'Aceptar';
     modalRef.componentInstance.buttonClass = 'btn-primary';
@@ -34,10 +38,11 @@ export class LaboratoriosComponent implements OnInit{
     });
   }
 
-  openModal(laboratorio:Laboratorio) {
+  openModal(laboratorio: Laboratorio) {
     const modalRef = this.modalService.open(ModalContentComponent);
     modalRef.componentInstance.name = 'Confirme la acción antes de continuar.';
-    modalRef.componentInstance.message = '¿Seguro que desea eliminar la máquina virtual?';
+    modalRef.componentInstance.message =
+      '¿Seguro que desea eliminar la máquina virtual?';
     modalRef.componentInstance.type = 'confirm';
     modalRef.componentInstance.buttonText = 'Eliminar';
     modalRef.componentInstance.buttonClass = 'btn-danger';
@@ -48,37 +53,37 @@ export class LaboratoriosComponent implements OnInit{
     });
   }
 
-  borrarLaboratorio(laboratorio:Laboratorio): void {
-    this.laboratoriosService.eliminarLaboratorio(laboratorio.idLaboratorio).subscribe(
-      (maquinaVirtual) => {
-        this.obtenerLaboratorios();
-      },
-      (error) => {
-        console.log('Error al borrar el laboratorio:', error);
-      }
-    );
+  borrarLaboratorio(laboratorio: Laboratorio): void {
+    this.laboratoriosService
+      .eliminarLaboratorio(laboratorio.idLaboratorio)
+      .subscribe(
+        (maquinaVirtual) => {
+          this.obtenerLaboratorios();
+        },
+        (error) => {
+          console.log('Error al borrar el laboratorio:', error);
+        },
+      );
   }
 
   obtenerLaboratorios(): void {
     this.laboratoriosService.getLaboratorios().subscribe(
       (laboratorios) => {
-        if(laboratorios === null)
-        {
+        if (laboratorios === null) {
           this.sesionExpirada();
-          this.router.navigate([''])
-        }else{
+          this.router.navigate(['']);
+        } else {
           this.laboratorios = laboratorios;
         }
       },
       (error) => {
-        if(error.status === 401)
-        {
+        if (error.status === 401) {
           this.sesionExpirada();
-          this.router.navigate([''])
-        }else{
+          this.router.navigate(['']);
+        } else {
           console.log('Error al obtener los laboratorios:', error);
         }
-      }
+      },
     );
   }
 }

@@ -8,27 +8,33 @@ import { ModalContentComponent } from '../modal-content/modal-content.component'
 @Component({
   selector: 'app-add-laboratorio',
   templateUrl: './add-laboratorio.component.html',
-  styleUrls: ['./add-laboratorio.component.css']
+  styleUrls: ['./add-laboratorio.component.css'],
 })
 export class AddLaboratorioComponent implements OnInit {
-
   laboratorio: Laboratorio = {
     idLaboratorio: 0,
-    nombreLaboratorio: ''
+    nombreLaboratorio: '',
   };
 
   isEdit: boolean = false;
-  
-  constructor(private laboratoriosService: LaboratorioService, private route: ActivatedRoute, private modalService:NgbModal, private router: Router) { }
 
-  openLaboratorioGuardadoModal(isEdit:boolean): void {
+  constructor(
+    private laboratoriosService: LaboratorioService,
+    private route: ActivatedRoute,
+    private modalService: NgbModal,
+    private router: Router,
+  ) {}
+
+  openLaboratorioGuardadoModal(isEdit: boolean): void {
     const modalRef = this.modalService.open(ModalContentComponent);
-    if(isEdit){
+    if (isEdit) {
       modalRef.componentInstance.name = 'Edición completa';
-      modalRef.componentInstance.message = 'Se ha editado con éxito el laboratorio';
-    }else{
+      modalRef.componentInstance.message =
+        'Se ha editado con éxito el laboratorio';
+    } else {
       modalRef.componentInstance.name = 'Carga completa';
-      modalRef.componentInstance.message = 'Se ha creado con éxito el laboratorio';
+      modalRef.componentInstance.message =
+        'Se ha creado con éxito el laboratorio';
     }
     modalRef.componentInstance.type = 'alert';
     modalRef.componentInstance.buttonText = 'Aceptar';
@@ -44,7 +50,8 @@ export class AddLaboratorioComponent implements OnInit {
   openErrorModal(): void {
     const modalRef = this.modalService.open(ModalContentComponent);
     modalRef.componentInstance.name = 'Se ha producido un error';
-    modalRef.componentInstance.message = 'No se ha podido procesar la solicitud.';
+    modalRef.componentInstance.message =
+      'No se ha podido procesar la solicitud.';
     modalRef.componentInstance.type = 'alert';
     modalRef.componentInstance.buttonText = 'Aceptar';
     modalRef.componentInstance.buttonClass = 'btn-primary';
@@ -54,10 +61,13 @@ export class AddLaboratorioComponent implements OnInit {
       }
     });
   }
-  
+
   ngOnInit(): void {
     const routeSnapshot = this.route.snapshot;
-    if (routeSnapshot.url.length > 0 && routeSnapshot.url[1].path === 'editar') {
+    if (
+      routeSnapshot.url.length > 0 &&
+      routeSnapshot.url[1].path === 'editar'
+    ) {
       this.isEdit = true;
     }
 
@@ -69,25 +79,27 @@ export class AddLaboratorioComponent implements OnInit {
 
   private loadLaboratorio(idLaboratorio: number) {
     this.laboratoriosService.getLaboratorio(idLaboratorio).subscribe(
-      laboratorio => {
+      (laboratorio) => {
         if (laboratorio != null) {
-          this.laboratorio =  laboratorio;
+          this.laboratorio = laboratorio;
         }
       },
-      error => {
+      (error) => {
         console.error('Error al obtener el laboratorio:', error);
-      }
+      },
     );
   }
 
   onSubmit(): void {
-    this.laboratoriosService.guardarLaboratorio(this.laboratorio, this.isEdit).subscribe(
-      response => {
-        this.openLaboratorioGuardadoModal(this.isEdit);
-      },
-      error => {
-        this.openErrorModal();
-      }
-    );
+    this.laboratoriosService
+      .guardarLaboratorio(this.laboratorio, this.isEdit)
+      .subscribe(
+        (response) => {
+          this.openLaboratorioGuardadoModal(this.isEdit);
+        },
+        (error) => {
+          this.openErrorModal();
+        },
+      );
   }
 }

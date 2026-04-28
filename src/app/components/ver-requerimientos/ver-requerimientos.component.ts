@@ -8,38 +8,40 @@ import { ModalContentComponent } from '../modal-content/modal-content.component'
 @Component({
   selector: 'app-ver-requerimientos',
   templateUrl: './ver-requerimientos.component.html',
-  styleUrls: ['./ver-requerimientos.component.css']
+  styleUrls: ['./ver-requerimientos.component.css'],
 })
 export class VerRequerimientosComponent implements OnInit {
+  requerimientos: Requerimiento[] = [];
 
-  requerimientos:Requerimiento[] = [];
-
-  constructor(private requerimientosService:RequerimientosService, private docentesService:DocentesService, private modalService: NgbModal) { }
+  constructor(
+    private requerimientosService: RequerimientosService,
+    private docentesService: DocentesService,
+    private modalService: NgbModal,
+  ) {}
 
   ngOnInit(): void {
-
     this.requerimientosService.getRequerimientos().subscribe(
-      res => {
-        if(res != null)
-        this.requerimientos = res;
+      (res) => {
+        if (res != null) this.requerimientos = res;
         this.loadDocentes();
       },
-      err => console.error(err)
+      (err) => console.error(err),
     );
   }
 
   loadDocentes(): void {
-    this.requerimientos.forEach(requerimiento => {
-      if (requerimiento.legajoDocente != null){
-        this.docentesService.getDocenteByLegajo(requerimiento.legajoDocente).subscribe(
-          res => {
-            if(res != null)
-            requerimiento.docente = res.nombre + ' ' + res.apellido;
-          },
-          err => console.error(err)
-        );
+    this.requerimientos.forEach((requerimiento) => {
+      if (requerimiento.legajoDocente != null) {
+        this.docentesService
+          .getDocenteByLegajo(requerimiento.legajoDocente)
+          .subscribe(
+            (res) => {
+              if (res != null)
+                requerimiento.docente = res.nombre + ' ' + res.apellido;
+            },
+            (err) => console.error(err),
+          );
       }
     });
   }
-
 }

@@ -5,26 +5,28 @@ import { Computadora } from '../model/Computadora';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ComputadorasService {
-  private apiUrl = environment.url+'/api/computadoras';
-  private httpOptions = {}
+  private apiUrl = environment.url + '/api/computadoras';
+  private httpOptions = {};
 
-  obtenerHeader()
-  {
+  obtenerHeader() {
     const token = localStorage.getItem('token') || '';
 
     this.httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': token
-      })
-    }
+        Authorization: token,
+      }),
+    };
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  guardarComputadora(Computadora: Computadora, isEdit:boolean): Observable<{ id: number }> {
+  guardarComputadora(
+    Computadora: Computadora,
+    isEdit: boolean,
+  ): Observable<{ id: number }> {
     if (isEdit == true) {
       return this.actualizarComputadora(Computadora.idComputadora, Computadora);
     } else {
@@ -32,8 +34,7 @@ export class ComputadorasService {
     }
   }
 
-  getMaquinasVirtuales(): Observable<Computadora[] | null>{
-
+  getMaquinasVirtuales(): Observable<Computadora[] | null> {
     this.obtenerHeader();
 
     return this.http.get<Computadora[]>(this.apiUrl, this.httpOptions);
@@ -41,14 +42,18 @@ export class ComputadorasService {
 
   getComputadora(id: number): Observable<Computadora | null> {
     this.obtenerHeader();
-    
+
     return this.http.get<Computadora>(`${this.apiUrl}/${id}`, this.httpOptions);
   }
 
   crearComputadora(Computadora: Computadora): Observable<{ id: number }> {
     this.obtenerHeader();
 
-    return this.http.post<{ id: number }>(this.apiUrl, Computadora, this.httpOptions);
+    return this.http.post<{ id: number }>(
+      this.apiUrl,
+      Computadora,
+      this.httpOptions,
+    );
   }
 
   actualizarComputadora(id: number, Computadora: Computadora): Observable<any> {

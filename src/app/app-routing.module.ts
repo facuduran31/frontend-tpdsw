@@ -16,30 +16,98 @@ import { verifyTokenDocente, verifyTokenEncargado } from './guards/login.guard';
 import { PanelencargadosComponent } from './panelencargados/panelencargados.component';
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'paneldocente', component: PaneldocentesComponent, canActivate: [verifyTokenDocente]},
-  {path: 'panelencargado', component: PanelencargadosComponent, canActivate: [verifyTokenEncargado]},
-  {path: 'maquinasvirtuales/add', component: AddMaquinaVirtualComponent, canActivate: [verifyTokenEncargado]},
-  {path: 'maquinasvirtuales/editar/:id', component: AddMaquinaVirtualComponent, canActivate: [verifyTokenEncargado]},
-  {path: 'maquinasvirtuales', component: MaquinasVirtualesComponent, canActivate: [verifyTokenEncargado]},
-  {path: 'laboratorios/add', component: AddLaboratorioComponent, canActivate: [verifyTokenEncargado]},
-  {path: 'laboratorios/editar/:id', component: AddLaboratorioComponent, canActivate: [verifyTokenEncargado]},
-  {path: 'laboratorios', component: LaboratoriosComponent, canActivate: [verifyTokenEncargado]},
-  {path: 'laboratorios/:id', component: VerLaboratorioComponent, canActivate: [verifyTokenEncargado]},
-  {path: 'laboratorios/:id/add', component: AddComputadoraComponent, canActivate: [verifyTokenEncargado]},
-  {path: 'laboratorios/:id/editar/:idComputadora', component: AddComputadoraComponent, canActivate: [verifyTokenEncargado]},
-  {path: 'nuevorequerimiento', component: AddRequerimientoComponent, canActivate: [verifyTokenDocente]},
-  {path: 'misrequerimientos', component: MisRequerimientosComponent, canActivate: [verifyTokenDocente]},
-  {path: 'misrequerimientos/editar/:id', component: AddRequerimientoComponent, canActivate: [verifyTokenDocente]},
-  {path: 'misrequerimientos/:estado', component: MisRequerimientosComponent, canActivate: [verifyTokenDocente]},
-  {path: 'requerimientos/:id', component: VerRequerimientoComponent, canActivate: [verifyTokenEncargado]},
-  {path: 'requerimientos', component: VerRequerimientosComponent, canActivate: [verifyTokenEncargado]},
-  {path: '**', redirectTo: '', pathMatch: 'full'}
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'paneldocente',
+    component: PaneldocentesComponent,
+    canActivate: [verifyTokenDocente],
+  },
+  {
+    path: 'panelencargado',
+    component: PanelencargadosComponent,
+    canActivate: [verifyTokenEncargado],
+  },
+  {
+    path: 'maquinasvirtuales/add',
+    component: AddMaquinaVirtualComponent,
+    canActivate: [verifyTokenEncargado],
+  },
+  {
+    path: 'maquinasvirtuales/editar/:id',
+    component: AddMaquinaVirtualComponent,
+    canActivate: [verifyTokenEncargado],
+  },
+  {
+    path: 'maquinasvirtuales',
+    component: MaquinasVirtualesComponent,
+    canActivate: [verifyTokenEncargado],
+  },
+  {
+    path: 'laboratorios/add',
+    component: AddLaboratorioComponent,
+    canActivate: [verifyTokenEncargado],
+  },
+  {
+    path: 'laboratorios/editar/:id',
+    component: AddLaboratorioComponent,
+    canActivate: [verifyTokenEncargado],
+  },
+  {
+    path: 'laboratorios',
+    component: LaboratoriosComponent,
+    canActivate: [verifyTokenEncargado],
+  },
+  {
+    path: 'laboratorios/:id',
+    component: VerLaboratorioComponent,
+    canActivate: [verifyTokenEncargado],
+  },
+  {
+    path: 'laboratorios/:id/add',
+    component: AddComputadoraComponent,
+    canActivate: [verifyTokenEncargado],
+  },
+  {
+    path: 'laboratorios/:id/editar/:idComputadora',
+    component: AddComputadoraComponent,
+    canActivate: [verifyTokenEncargado],
+  },
+  {
+    path: 'nuevorequerimiento',
+    component: AddRequerimientoComponent,
+    canActivate: [verifyTokenDocente],
+  },
+  {
+    path: 'misrequerimientos',
+    component: MisRequerimientosComponent,
+    canActivate: [verifyTokenDocente],
+  },
+  {
+    path: 'misrequerimientos/editar/:id',
+    component: AddRequerimientoComponent,
+    canActivate: [verifyTokenDocente],
+  },
+  {
+    path: 'misrequerimientos/:estado',
+    component: MisRequerimientosComponent,
+    canActivate: [verifyTokenDocente],
+  },
+  {
+    path: 'requerimientos/:id',
+    component: VerRequerimientoComponent,
+    canActivate: [verifyTokenEncargado],
+  },
+  {
+    path: 'requerimientos',
+    component: VerRequerimientosComponent,
+    canActivate: [verifyTokenEncargado],
+  },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

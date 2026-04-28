@@ -44,7 +44,7 @@ import { RouterModule } from '@angular/router';
     AddComputadoraComponent,
     VerRequerimientosComponent,
     VerRequerimientoComponent,
-    PanelencargadosComponent
+    PanelencargadosComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,9 +52,9 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     FormsModule,
     RouterModule,
-    NgbModule
+    NgbModule,
   ],
   providers: [MaquinasVirtualesService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

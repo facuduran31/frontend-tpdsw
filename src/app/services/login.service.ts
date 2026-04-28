@@ -4,19 +4,19 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environment/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
-  private apiURL = environment.url+'/api/login';
+  private apiURL = environment.url + '/api/login';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  verifyToken(token:string): Observable<any> {
+  verifyToken(token: string): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': `${token}`
-      })
+        Authorization: `${token}`,
+      }),
     };
 
     return this.http.get<any>(this.apiURL + '/verify', httpOptions);
@@ -26,8 +26,8 @@ export class LoginService {
     const credentials = { email, password };
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
+        'Content-Type': 'application/json',
+      }),
     };
 
     return this.http.post<any>(this.apiURL, credentials, httpOptions);

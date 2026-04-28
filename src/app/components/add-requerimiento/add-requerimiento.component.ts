@@ -8,13 +8,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-add-requerimiento',
   templateUrl: './add-requerimiento.component.html',
-  styleUrls: ['./add-requerimiento.component.css']
+  styleUrls: ['./add-requerimiento.component.css'],
 })
 export class AddRequerimientoComponent implements OnInit {
-
   isEdit: boolean = false;
 
-  requerimiento:Requerimiento = {
+  requerimiento: Requerimiento = {
     idRequerimiento: null,
     tipoRequerimiento: '',
     tipoReserva: '',
@@ -34,14 +33,22 @@ export class AddRequerimientoComponent implements OnInit {
     horaFin: null,
     proyector: false,
     zapatilla: false,
-    docente: ''
+    docente: '',
   };
 
-  constructor(private requerimientoService: RequerimientosService, private modalService:NgbModal, private router:Router, private route:ActivatedRoute) { }
+  constructor(
+    private requerimientoService: RequerimientosService,
+    private modalService: NgbModal,
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
     const routeSnapshot = this.route.snapshot;
-    if (routeSnapshot.url.length > 0 && routeSnapshot.url[1].path === 'editar') {
+    if (
+      routeSnapshot.url.length > 0 &&
+      routeSnapshot.url[1].path === 'editar'
+    ) {
       this.isEdit = true;
     }
 
@@ -53,24 +60,25 @@ export class AddRequerimientoComponent implements OnInit {
 
   loadRequerimiento(idRequerimiento: number) {
     this.requerimientoService.getRequerimiento(idRequerimiento).subscribe(
-      response => 
-      {
-        if(response){
-          this.requerimiento = response
+      (response) => {
+        if (response) {
+          this.requerimiento = response;
         }
       },
-      error => this.openErrorModal()
+      (error) => this.openErrorModal(),
     );
   }
 
-  openRequerimientoGuardadoModal(isEdit:boolean): void {
+  openRequerimientoGuardadoModal(isEdit: boolean): void {
     const modalRef = this.modalService.open(ModalContentComponent);
-    if(isEdit){
+    if (isEdit) {
       modalRef.componentInstance.name = 'Edición completa';
-      modalRef.componentInstance.message = 'Se ha editado con éxito el requerimiento';
-    }else{
+      modalRef.componentInstance.message =
+        'Se ha editado con éxito el requerimiento';
+    } else {
       modalRef.componentInstance.name = 'Carga completa';
-      modalRef.componentInstance.message = 'Se ha creado con éxito el requerimiento';
+      modalRef.componentInstance.message =
+        'Se ha creado con éxito el requerimiento';
     }
     modalRef.componentInstance.type = 'alert';
     modalRef.componentInstance.buttonText = 'Aceptar';
@@ -85,7 +93,8 @@ export class AddRequerimientoComponent implements OnInit {
   openErrorModal(): void {
     const modalRef = this.modalService.open(ModalContentComponent);
     modalRef.componentInstance.name = 'Se ha producido un error';
-    modalRef.componentInstance.message = 'No se ha podido procesar la solicitud.';
+    modalRef.componentInstance.message =
+      'No se ha podido procesar la solicitud.';
     modalRef.componentInstance.type = 'alert';
     modalRef.componentInstance.buttonText = 'Aceptar';
     modalRef.componentInstance.buttonClass = 'btn-primary';
@@ -96,11 +105,12 @@ export class AddRequerimientoComponent implements OnInit {
     });
   }
 
-  submit()
-  {
-    this.requerimientoService.guardarRequerimiento(this.requerimiento, this.isEdit).subscribe(
-      response => this.openRequerimientoGuardadoModal(this.isEdit),
-      error => this.openErrorModal()
-    );
+  submit() {
+    this.requerimientoService
+      .guardarRequerimiento(this.requerimiento, this.isEdit)
+      .subscribe(
+        (response) => this.openRequerimientoGuardadoModal(this.isEdit),
+        (error) => this.openErrorModal(),
+      );
   }
 }
